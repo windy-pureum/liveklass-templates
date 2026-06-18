@@ -1,1 +1,34 @@
-IyDrnbzsnbTruIztgbTrnpjsiqQg7J2066mU7J28IO2FnO2UjOumvwoKIyMg7Y+0642UIOq1rOyhsAoKYGBgCmVtYWlscy8KICBhY2NvdW50LyAgICAgICAgIOqzhOyglSDqtIDroKggKO2ajOybkOqwgOyehSwg7J247KadLCDruYTrsIDrsojtmLgg65OxKQogIHBsYW4tYmlsbGluZy8gICAg7ZSM656cICsg6rKw7KCcIOq0gOugqAogIGNsYXNzLyAgICAgICAgICAg7YyQ66ek7IOB7ZKIIOyLoOyyrSDqtIDroKgKICBjb21tdW5pdHkvICAgICAgIOy7pOuupOuLiO2LsCArIOqzteyngCArIOuMk+q4gCDqtIDroKgKICBfc2hhcmVkLyAgICAgICAgIO2XpOuNlCDCtyDtkbjthLAg7YOA7J6FIOq4sOykgCDrrLjshJwKYGBgCgojIyDtl6TrjZQg7YOA7J6FCgp8IO2DgOyehSB8IO2MjOydvOuqhSDqt5zsuZkgfCDsoIHsmqkg64yA7IOBIHwKfC0tLXwtLS18LS0tfAp8IOudvOydtOu4jO2BtOuemOyKpCDroZzqs6AgfCBgaGVhZGVyLWxpdmVrbGFzc2AgfCDsmrTsmIHsnpDCt+qwleyCrCDrjIDsg4Eg66mU7J28LCDsmKjrs7TrlKkgfAp8IOqzoOqwneyCrCjqsJzrs4Qg7IKs7J207Yq4KSDroZzqs6AgfCBgaGVhZGVyLXNpdGVgIHwg7IiY6rCV7IOdIOuMgOyDgSDrqZTsnbwgfAp8IOyXhuydjCB8IGBoZWFkZXItbm9uZWAgfCDrs7TslYgg66mU7J28LCDrnbzsnbTruIwg7JWM66a8IHwKCiMjIO2RuO2EsCDtg4DsnoUKCnwg7YOA7J6FIHwg7YyM7J2866qFIOq3nOy5mSB8IOyggeyaqSDrjIDsg4EgfAp8LS0tfC0tLXwtLS18Cnwg65287J2067iM7YG0656Y7IqkIO2RuO2EsCB8IGBmb290ZXItbGl2ZWtsYXNzYCB8IOyatOyYgeyekMK36rCV7IKsIOuMgOyDgSDrqZTsnbwgfAp8IOqwnOuzhCDsgqzsnbTtirgg7ZG47YSwIHwgYGZvb3Rlci1zaXRlYCB8IOyImOqwleyDnSDrjIDsg4Eg66mU7J28IHwKfCDrr7jri4gg7ZG47YSwIHwgYGZvb3Rlci1taW5pYCB8IOuztOyViCDrqZTsnbwgKO2VnCDspIQpIHwKCiMjIOyekeyXhSDqt5zsuZkKCi0g6rCBIGh0bWwg7YyM7J287J2AIO2XpOuNlCArIOuzuOusuCArIO2RuO2EsOqwgCDtj6ztlajrkJwg7JmE7ISx67O47Jy866GcIOq0gOumrAotIO2MjOydvOuqheydgCBgc25ha2VfY2FzZWAg7IKs7JqpCi0g7IOIIO2FnO2UjOumvyDstpTqsIAg7IucIOychCDtl6TrjZQv7ZG47YSwIOq4sOykgO2RnCDssLjqs6AK
+# 라이브클래스 이메일 템플릿
+
+## 폴더 구조
+
+```
+emails/
+  account/         계정 관련 (회원가입, 인증, 비밀번호 등)
+  plan-billing/    플랜 + 결제 관련
+  class/           판매상품 신청 관련
+  community/       커뮤니티 + 공지 + 댓글 관련
+  _shared/         헤더 · 푸터 타입 기준 문서
+```
+
+## 헤더 타입
+
+| 타입 | 파일명 규칙 | 적용 대상 |
+|---|---|---|
+| 라이브클래스 로고 | `header-liveklass` | 운영자·강사 대상 메일, 온보딩 |
+| 고객사(개별 사이트) 로고 | `header-site` | 수강생 대상 메일 |
+| 없음 | `header-none` | 보안 메일, 라이브 알림 |
+
+## 푸터 타입
+
+| 타입 | 파일명 규칙 | 적용 대상 |
+|---|---|---|
+| 라이브클래스 푸터 | `footer-liveklass` | 운영자·강사 대상 메일 |
+| 개별 사이트 푸터 | `footer-site` | 수강생 대상 메일 |
+| 미니 푸터 | `footer-mini` | 보안 메일 (한 줄) |
+
+## 작업 규칙
+
+- 각 html 파일은 헤더 + 본문 + 푸터가 포함된 완성본으로 관리
+- 파일명은 `snake_case` 사용
+- 새 템플릿 추가 시 위 헤더/푸터 기준표 참고
