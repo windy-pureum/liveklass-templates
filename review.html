@@ -9,12 +9,11 @@
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#F1F5F9;color:#0F172A;min-height:100vh}
 
-/* ── Header ── */
 .top-bar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #E2E8F0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.top-inner{max-width:1440px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:0;height:56px}
+.top-inner{max-width:1440px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:56px}
 .logo{font-size:15px;font-weight:700;color:#2E8CFF;letter-spacing:-.3px;margin-right:32px;white-space:nowrap}
 .logo span{color:#0F172A}
-.tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{padding:0 18px;height:56px;display:flex;align-items:center;font-size:14px;font-weight:500;color:#64748B;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;text-decoration:none;transition:color .15s,border-color .15s}
 .tab:hover{color:#2E8CFF}
@@ -22,34 +21,42 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
 .tab-count{font-size:11px;background:#F1F5F9;color:#94A3B8;border-radius:20px;padding:1px 6px;margin-left:5px}
 .tab.active .tab-count{background:#EFF6FF;color:#2E8CFF}
 
-/* ── Page ── */
 .page{max-width:1440px;margin:0 auto;padding:28px 24px 64px}
 .category-section{display:none}
 .category-section.visible{display:block}
 .section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
-.section-title{font-size:20px;font-weight:700;color:#0F172A}
+.section-title{font-size:20px;font-weight:700}
 .section-count{font-size:13px;color:#94A3B8}
 
-/* ── Card ── */
 .card{background:#fff;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:20px;overflow:hidden}
-.card-header{padding:14px 20px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;gap:12px}
-.card-id{font-size:11px;font-family:monospace;color:#94A3B8;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:4px;padding:2px 7px;letter-spacing:.3px}
+.card-header{padding:12px 20px;border-bottom:1px solid #F1F5F9;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.card-id{font-size:11px;font-family:monospace;color:#94A3B8;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:4px;padding:2px 7px}
 .card-name{font-size:14px;font-weight:600;color:#0F172A}
 .card-desc{font-size:12px;color:#94A3B8}
+
+/* Subject row */
+.subject-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #E2E8F0}
+.subj-pane{padding:10px 16px;display:flex;align-items:baseline;gap:8px;min-height:38px}
+.subj-pane.before{border-right:1px solid #E2E8F0;background:#FAFAFA}
+.subj-pane.after{background:#F0F7FF}
+.subj-label{font-size:11px;font-weight:600;color:#94A3B8;white-space:nowrap;flex-shrink:0}
+.subj-label.after-lbl{color:#2E8CFF}
+.subj-text{font-size:13px;color:#374151;line-height:1.5;word-break:break-word}
+.subj-text.loading{color:#CBD5E1;font-style:italic}
+
+/* Panes */
 .card-body{display:grid;grid-template-columns:1fr 1fr}
 .pane{display:flex;flex-direction:column}
-.pane-header{padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #F1F5F9}
-.pane-label{font-size:12px;font-weight:600;letter-spacing:.02em}
-.pane-label.before{color:#64748B}
-.pane-label.after{color:#2E8CFF}
-.pane-dot{width:7px;height:7px;border-radius:50%}
+.pane:first-child{border-right:1px solid #E2E8F0}
+.pane-header{padding:8px 16px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #F1F5F9;background:#FAFAFA}
+.pane-header.after-hdr{background:#F0F7FF}
+.pane-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .pane-dot.before{background:#CBD5E1}
 .pane-dot.after{background:#2E8CFF}
-.pane:first-child{border-right:1px solid #E2E8F0}
+.pane-label{font-size:12px;font-weight:600}
+.pane-label.before{color:#64748B}
+.pane-label.after{color:#2E8CFF}
 .pane iframe{width:100%;height:580px;border:none;display:block;background:#fafafa}
-
-/* ── Empty state ── */
-.no-before{height:580px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#CBD5E1;background:#FAFAFA}
 </style>
 </head>
 <body>
@@ -68,686 +75,435 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
 
 <div class="page">
 
-<!-- ════════════════════ 커뮤니티 ════════════════════ -->
+<!-- ════ 커뮤니티 ════ -->
 <div id="tab-community" class="category-section visible">
-  <div class="section-header">
-    <span class="section-title">커뮤니티</span>
-    <span class="section-count">8개 템플릿</span>
-  </div>
+  <div class="section-header"><span class="section-title">커뮤니티</span><span class="section-count">8개 템플릿</span></div>
 
-  <!-- comment_curriculum_community -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">comment_curriculum_community</span>
-      <span class="card-name">커뮤니티 댓글 알람</span>
-      <span class="card-desc">커뮤니티 글에 댓글이 달렸을 때 작성자에게 발송</span>
+  <div class="card" data-id="comment_curriculum_community">
+    <div class="card-header"><span class="card-id">comment_curriculum_community</span><span class="card-name">커뮤니티 댓글 알람</span><span class="card-desc">커뮤니티 글에 댓글이 달렸을 때 작성자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-comment_curriculum_community"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-comment_curriculum_community"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/comment_curriculum_community.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/comment_curriculum_community.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/comment_curriculum_community.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/comment_curriculum_community.html"></iframe></div>
     </div>
   </div>
 
-  <!-- comment_curriculum_homework -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">comment_curriculum_homework</span>
-      <span class="card-name">과제 답변 알람</span>
-      <span class="card-desc">과제 글에 답변이 달렸을 때 제출자에게 발송</span>
+  <div class="card" data-id="comment_curriculum_homework">
+    <div class="card-header"><span class="card-id">comment_curriculum_homework</span><span class="card-name">과제 답변 알람</span><span class="card-desc">과제 글에 답변이 달렸을 때 제출자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-comment_curriculum_homework"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-comment_curriculum_homework"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/comment_curriculum_homework.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/comment_curriculum_homework.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/comment_curriculum_homework.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/comment_curriculum_homework.html"></iframe></div>
     </div>
   </div>
 
-  <!-- comment_notice -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">comment_notice</span>
-      <span class="card-name">공지 댓글 알람</span>
-      <span class="card-desc">공지사항에 댓글이 달렸을 때 강사에게 발송</span>
+  <div class="card" data-id="comment_notice">
+    <div class="card-header"><span class="card-id">comment_notice</span><span class="card-name">공지 댓글 알람</span><span class="card-desc">공지사항에 댓글이 달렸을 때 강사에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-comment_notice"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-comment_notice"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/comment_notice.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/comment_notice.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/comment_notice.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/comment_notice.html"></iframe></div>
     </div>
   </div>
 
-  <!-- comment_qna -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">comment_qna</span>
-      <span class="card-name">질문 답변 알람</span>
-      <span class="card-desc">질문에 답변이 달렸을 때 발송</span>
+  <div class="card" data-id="comment_qna">
+    <div class="card-header"><span class="card-id">comment_qna</span><span class="card-name">질문 답변 알람</span><span class="card-desc">질문에 답변이 달렸을 때 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-comment_qna"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-comment_qna"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/comment_qna.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/comment_qna.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/comment_qna.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/comment_qna.html"></iframe></div>
     </div>
   </div>
 
-  <!-- curriculum_community -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">curriculum_community</span>
-      <span class="card-name">커뮤니티 등록 알람</span>
-      <span class="card-desc">커뮤니티에 새 글이 작성되었을 때 강사에게 발송</span>
+  <div class="card" data-id="curriculum_community">
+    <div class="card-header"><span class="card-id">curriculum_community</span><span class="card-name">커뮤니티 등록 알람</span><span class="card-desc">커뮤니티에 새 글이 작성되었을 때 강사에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-curriculum_community"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-curriculum_community"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/curriculum_community.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/curriculum_community.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/curriculum_community.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/curriculum_community.html"></iframe></div>
     </div>
   </div>
 
-  <!-- curriculum_homework -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">curriculum_homework</span>
-      <span class="card-name">과제 제출 알람</span>
-      <span class="card-desc">수강자가 과제를 제출했을 때 강사에게 발송</span>
+  <div class="card" data-id="curriculum_homework">
+    <div class="card-header"><span class="card-id">curriculum_homework</span><span class="card-name">과제 제출 알람</span><span class="card-desc">수강자가 과제를 제출했을 때 강사에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-curriculum_homework"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-curriculum_homework"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/curriculum_homework.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/curriculum_homework.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/curriculum_homework.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/curriculum_homework.html"></iframe></div>
     </div>
   </div>
 
-  <!-- notice -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">notice</span>
-      <span class="card-name">공지사항 등록 알람</span>
-      <span class="card-desc">공지 등록 시 수강자에게 발송</span>
+  <div class="card" data-id="notice">
+    <div class="card-header"><span class="card-id">notice</span><span class="card-name">공지사항 등록 알람</span><span class="card-desc">공지 등록 시 수강자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-notice"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-notice"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/notice.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/notice.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/notice.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/notice.html"></iframe></div>
     </div>
   </div>
 
-  <!-- qna -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">qna</span>
-      <span class="card-name">질문 등록 알람</span>
-      <span class="card-desc">질문이 등록되었을 때 강사에게 발송</span>
+  <div class="card" data-id="qna">
+    <div class="card-header"><span class="card-id">qna</span><span class="card-name">질문 등록 알람</span><span class="card-desc">질문이 등록되었을 때 강사에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-qna"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-qna"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/community/qna.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/community/qna.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/community/qna.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/community/qna.html"></iframe></div>
     </div>
   </div>
 </div><!-- /community -->
 
 
-<!-- ════════════════════ 클래스 ════════════════════ -->
+<!-- ════ 클래스 ════ -->
 <div id="tab-class" class="category-section">
-  <div class="section-header">
-    <span class="section-title">클래스</span>
-    <span class="section-count">7개 템플릿</span>
-  </div>
+  <div class="section-header"><span class="section-title">클래스</span><span class="section-count">7개 템플릿</span></div>
 
-  <!-- class_attend -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_attend</span>
-      <span class="card-name">클래스 참가 알람</span>
-      <span class="card-desc">무료·유료 클래스 신청 시 수강자에게 발송</span>
+  <div class="card" data-id="class_attend">
+    <div class="card-header"><span class="card-id">class_attend</span><span class="card-name">클래스 참가 알람</span><span class="card-desc">무료·유료 클래스 신청 시 수강자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_attend"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_attend"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_attend.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_attend.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_attend.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_attend.html"></iframe></div>
     </div>
   </div>
 
-  <!-- class_attend_cancel -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_attend_cancel</span>
-      <span class="card-name">수강승인 취소 알람</span>
-      <span class="card-desc">운영자가 수강승인 취소 시 발송</span>
+  <div class="card" data-id="class_attend_cancel">
+    <div class="card-header"><span class="card-id">class_attend_cancel</span><span class="card-name">수강승인 취소 알람</span><span class="card-desc">운영자가 수강승인 취소 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_attend_cancel"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_attend_cancel"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_attend_cancel.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_attend_cancel.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_attend_cancel.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_attend_cancel.html"></iframe></div>
     </div>
   </div>
 
-  <!-- class_attend_cstm_event -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_attend_cstm_event</span>
-      <span class="card-name">클래스 참가 알람 (커스텀 이벤트)</span>
-      <span class="card-desc">커스텀 이벤트 클래스 참가 시 발송</span>
+  <div class="card" data-id="class_attend_cstm_event">
+    <div class="card-header"><span class="card-id">class_attend_cstm_event</span><span class="card-name">클래스 참가 알람 (커스텀 이벤트)</span><span class="card-desc">커스텀 이벤트 클래스 참가 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_attend_cstm_event"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_attend_cstm_event"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_attend_cstm_event.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_attend_cstm_event.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_attend_cstm_event.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_attend_cstm_event.html"></iframe></div>
     </div>
   </div>
 
-  <!-- class_attend_payment -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_attend_payment</span>
-      <span class="card-name">유료 클래스 신청 알람</span>
-      <span class="card-desc">유료 클래스 신청 시 관리자·강사에게 발송</span>
+  <div class="card" data-id="class_attend_payment">
+    <div class="card-header"><span class="card-id">class_attend_payment</span><span class="card-name">유료 클래스 신청 알람</span><span class="card-desc">유료 클래스 신청 시 관리자·강사에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_attend_payment"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_attend_payment"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_attend_payment.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_attend_payment.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_attend_payment.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_attend_payment.html"></iframe></div>
     </div>
   </div>
 
-  <!-- class_attend_wait -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_attend_wait</span>
-      <span class="card-name">대기자 신청 알람</span>
-      <span class="card-desc">대기자로 신청했을 때 수강자에게 발송</span>
+  <div class="card" data-id="class_attend_wait">
+    <div class="card-header"><span class="card-id">class_attend_wait</span><span class="card-name">대기자 신청 알람</span><span class="card-desc">대기자로 신청했을 때 수강자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_attend_wait"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_attend_wait"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_attend_wait.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_attend_wait.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_attend_wait.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_attend_wait.html"></iframe></div>
     </div>
   </div>
 
-  <!-- class_attendee_invite -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_attendee_invite</span>
-      <span class="card-name">클래스 초대 알람</span>
-      <span class="card-desc">수강자로 초대 시 발송</span>
+  <div class="card" data-id="class_attendee_invite">
+    <div class="card-header"><span class="card-id">class_attendee_invite</span><span class="card-name">클래스 초대 알람</span><span class="card-desc">수강자로 초대 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_attendee_invite"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_attendee_invite"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_attendee_invite.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_attendee_invite.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_attendee_invite.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_attendee_invite.html"></iframe></div>
     </div>
   </div>
 
-  <!-- class_course_user_invite -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">class_course_user_invite</span>
-      <span class="card-name">강사 초대 알람</span>
-      <span class="card-desc">클래스 강사로 초대 시 발송</span>
+  <div class="card" data-id="class_course_user_invite">
+    <div class="card-header"><span class="card-id">class_course_user_invite</span><span class="card-name">강사 초대 알람</span><span class="card-desc">클래스 강사로 초대 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-class_course_user_invite"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-class_course_user_invite"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/class/class_course_user_invite.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/class/class_course_user_invite.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/class/class_course_user_invite.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/class/class_course_user_invite.html"></iframe></div>
     </div>
   </div>
 </div><!-- /class -->
 
 
-<!-- ════════════════════ 계정 ════════════════════ -->
+<!-- ════ 계정 ════ -->
 <div id="tab-account" class="category-section">
-  <div class="section-header">
-    <span class="section-title">계정</span>
-    <span class="section-count">4개 템플릿</span>
-  </div>
+  <div class="section-header"><span class="section-title">계정</span><span class="section-count">4개 템플릿</span></div>
 
-  <!-- authentication_code -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">authentication_code</span>
-      <span class="card-name">이메일 인증 코드</span>
-      <span class="card-desc">회원가입 인증코드 발급 시 발송</span>
+  <div class="card" data-id="authentication_code">
+    <div class="card-header"><span class="card-id">authentication_code</span><span class="card-name">이메일 인증 코드</span><span class="card-desc">회원가입 인증코드 발급 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-authentication_code"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-authentication_code"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/account/authentication_code.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/account/authentication_code.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/account/authentication_code.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/account/authentication_code.html"></iframe></div>
     </div>
   </div>
 
-  <!-- otp_code -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">otp_code</span>
-      <span class="card-name">OTP 코드 / 비밀번호 실패 알람</span>
-      <span class="card-desc">OTP 인증 또는 비밀번호 n회 실패 시 발송</span>
+  <div class="card" data-id="otp_code">
+    <div class="card-header"><span class="card-id">otp_code</span><span class="card-name">OTP 코드</span><span class="card-desc">OTP 인증 또는 비밀번호 n회 실패 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-otp_code"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-otp_code"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/account/otp_code.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/account/otp_code.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/account/otp_code.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/account/otp_code.html"></iframe></div>
     </div>
   </div>
 
-  <!-- reset_password -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">reset_password</span>
-      <span class="card-name">비밀번호 변경 메일</span>
-      <span class="card-desc">비밀번호 변경 URL 발급 시 발송</span>
+  <div class="card" data-id="reset_password">
+    <div class="card-header"><span class="card-id">reset_password</span><span class="card-name">비밀번호 변경 메일</span><span class="card-desc">비밀번호 변경 URL 발급 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-reset_password"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-reset_password"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/account/reset_password.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/account/reset_password.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/account/reset_password.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/account/reset_password.html"></iframe></div>
     </div>
   </div>
 
-  <!-- seller_identity_verification -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">seller_identity_verification</span>
-      <span class="card-name">셀러 본인 인증 안내</span>
-      <span class="card-desc">셀러 등록 본인 인증 사전 안내 메일</span>
+  <div class="card" data-id="seller_identity_verification">
+    <div class="card-header"><span class="card-id">seller_identity_verification</span><span class="card-name">셀러 본인 인증 안내</span><span class="card-desc">셀러 등록 본인 인증 사전 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-seller_identity_verification"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-seller_identity_verification"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/account/seller_identity_verification.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/account/seller_identity_verification.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/account/seller_identity_verification.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/account/seller_identity_verification.html"></iframe></div>
     </div>
   </div>
 </div><!-- /account -->
 
 
-<!-- ════════════════════ 요금제·결제 ════════════════════ -->
+<!-- ════ 요금제·결제 ════ -->
 <div id="tab-billing" class="category-section">
-  <div class="section-header">
-    <span class="section-title">요금제·결제</span>
-    <span class="section-count">15개 템플릿</span>
-  </div>
+  <div class="section-header"><span class="section-title">요금제·결제</span><span class="section-count">15개 템플릿</span></div>
 
-  <!-- channel_ex_payment_due -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">channel_ex_payment_due</span>
-      <span class="card-name">부가서비스 결제 예정</span>
-      <span class="card-desc">사이트 부가서비스 결제 예정 안내</span>
+  <div class="card" data-id="channel_ex_payment_due">
+    <div class="card-header"><span class="card-id">channel_ex_payment_due</span><span class="card-name">부가서비스 결제 예정</span><span class="card-desc">사이트 부가서비스 결제 예정 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_due"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_due"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/channel_ex_payment_due.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/channel_ex_payment_due.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_due.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_due.html"></iframe></div>
     </div>
   </div>
 
-  <!-- channel_ex_payment_fail -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">channel_ex_payment_fail</span>
-      <span class="card-name">부가서비스 결제 실패</span>
-      <span class="card-desc">사이트 부가서비스 결제 실패 안내</span>
+  <div class="card" data-id="channel_ex_payment_fail">
+    <div class="card-header"><span class="card-id">channel_ex_payment_fail</span><span class="card-name">부가서비스 결제 실패</span><span class="card-desc">사이트 부가서비스 결제 실패 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_fail"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_fail"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/channel_ex_payment_fail.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/channel_ex_payment_fail.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_fail.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_fail.html"></iframe></div>
     </div>
   </div>
 
-  <!-- channel_ex_payment_ok -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">channel_ex_payment_ok</span>
-      <span class="card-name">부가서비스 결제 성공</span>
-      <span class="card-desc">사이트 부가서비스 결제 성공 안내</span>
+  <div class="card" data-id="channel_ex_payment_ok">
+    <div class="card-header"><span class="card-id">channel_ex_payment_ok</span><span class="card-name">부가서비스 결제 성공</span><span class="card-desc">사이트 부가서비스 결제 성공 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_ok"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_ok"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/channel_ex_payment_ok.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/channel_ex_payment_ok.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_ok.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_ok.html"></iframe></div>
     </div>
   </div>
 
-  <!-- monthly_plan_alarm_before_1 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">monthly_plan_alarm_before_1</span>
-      <span class="card-name">월 플랜 만료 1일 전</span>
-      <span class="card-desc">월 결제 플랜 만료 1일 전 사이트 소유자에게 발송</span>
+  <div class="card" data-id="monthly_plan_alarm_before_1">
+    <div class="card-header"><span class="card-id">monthly_plan_alarm_before_1</span><span class="card-name">월 플랜 만료 1일 전</span><span class="card-desc">월 결제 플랜 만료 1일 전 사이트 소유자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-monthly_plan_alarm_before_1"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-monthly_plan_alarm_before_1"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/monthly_plan_alarm_before_1.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/monthly_plan_alarm_before_1.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/monthly_plan_alarm_before_1.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/monthly_plan_alarm_before_1.html"></iframe></div>
     </div>
   </div>
 
-  <!-- monthly_plan_alarm_before_5 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">monthly_plan_alarm_before_5</span>
-      <span class="card-name">월 플랜 만료 5일 전</span>
-      <span class="card-desc">월 결제 플랜 만료 5일 전 사이트 소유자에게 발송</span>
+  <div class="card" data-id="monthly_plan_alarm_before_5">
+    <div class="card-header"><span class="card-id">monthly_plan_alarm_before_5</span><span class="card-name">월 플랜 만료 5일 전</span><span class="card-desc">월 결제 플랜 만료 5일 전 사이트 소유자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-monthly_plan_alarm_before_5"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-monthly_plan_alarm_before_5"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/monthly_plan_alarm_before_5.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/monthly_plan_alarm_before_5.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/monthly_plan_alarm_before_5.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/monthly_plan_alarm_before_5.html"></iframe></div>
     </div>
   </div>
 
-  <!-- plan_alarm_attendee_70 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">plan_alarm_attendee_70</span>
-      <span class="card-name">수강생 한도 70% 알람</span>
-      <span class="card-desc">수강생 한도 70% 사용 시 발송</span>
+  <div class="card" data-id="plan_alarm_attendee_70">
+    <div class="card-header"><span class="card-id">plan_alarm_attendee_70</span><span class="card-name">수강생 한도 70% 알람</span><span class="card-desc">수강생 한도 70% 사용 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_70"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_70"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/plan_alarm_attendee_70.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/plan_alarm_attendee_70.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_70.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_70.html"></iframe></div>
     </div>
   </div>
 
-  <!-- plan_alarm_attendee_90 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">plan_alarm_attendee_90</span>
-      <span class="card-name">수강생 한도 90% 알람</span>
-      <span class="card-desc">수강생 한도 90% 사용 시 발송</span>
+  <div class="card" data-id="plan_alarm_attendee_90">
+    <div class="card-header"><span class="card-id">plan_alarm_attendee_90</span><span class="card-name">수강생 한도 90% 알람</span><span class="card-desc">수강생 한도 90% 사용 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_90"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_90"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/plan_alarm_attendee_90.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/plan_alarm_attendee_90.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_90.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_90.html"></iframe></div>
     </div>
   </div>
 
-  <!-- plan_alarm_attendee_100 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">plan_alarm_attendee_100</span>
-      <span class="card-name">수강생 한도 100% 알람</span>
-      <span class="card-desc">수강생 한도 초과 시 발송</span>
+  <div class="card" data-id="plan_alarm_attendee_100">
+    <div class="card-header"><span class="card-id">plan_alarm_attendee_100</span><span class="card-name">수강생 한도 100% 알람</span><span class="card-desc">수강생 한도 초과 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_100"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_100"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/plan_alarm_attendee_100.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/plan_alarm_attendee_100.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_100.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_100.html"></iframe></div>
     </div>
   </div>
 
-  <!-- plan_payment_alarm -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">plan_payment_alarm</span>
-      <span class="card-name">유료 플랜 결제 알람</span>
-      <span class="card-desc">유료 플랜 결제 완료 시 사이트 소유자에게 발송</span>
+  <div class="card" data-id="plan_payment_alarm">
+    <div class="card-header"><span class="card-id">plan_payment_alarm</span><span class="card-name">유료 플랜 결제 알람</span><span class="card-desc">유료 플랜 결제 완료 시 사이트 소유자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_payment_alarm"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_payment_alarm"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/plan_payment_alarm.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/plan_payment_alarm.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_payment_alarm.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_payment_alarm.html"></iframe></div>
     </div>
   </div>
 
-  <!-- plan_resubscribe_fail_alarm -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">plan_resubscribe_fail_alarm</span>
-      <span class="card-name">플랜 자동 연장 실패</span>
-      <span class="card-desc">플랜 자동 연장 실패 시 발송</span>
+  <div class="card" data-id="plan_resubscribe_fail_alarm">
+    <div class="card-header"><span class="card-id">plan_resubscribe_fail_alarm</span><span class="card-name">플랜 자동 연장 실패</span><span class="card-desc">플랜 자동 연장 실패 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_resubscribe_fail_alarm"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_resubscribe_fail_alarm"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/plan_resubscribe_fail_alarm.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/plan_resubscribe_fail_alarm.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_resubscribe_fail_alarm.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_resubscribe_fail_alarm.html"></iframe></div>
     </div>
   </div>
 
-  <!-- plan_resubscribe_fail_and_change_to_default_alarm -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">plan_resubscribe_fail_and_change_to_default_alarm</span>
-      <span class="card-name">플랜 자동 연장 실패 & 무료 전환</span>
-      <span class="card-desc">유효기간까지 연장 실패 → 무료 플랜 전환 시 발송</span>
+  <div class="card" data-id="plan_resubscribe_fail_and_change_to_default_alarm">
+    <div class="card-header"><span class="card-id">plan_resubscribe_fail_and_change_to_default_alarm</span><span class="card-name">플랜 자동 연장 실패 & 무료 전환</span><span class="card-desc">유효기간까지 연장 실패 → 무료 플랜 전환 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_resubscribe_fail_and_change_to_default_alarm"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_resubscribe_fail_and_change_to_default_alarm"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/plan_resubscribe_fail_and_change_to_default_alarm.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/plan_resubscribe_fail_and_change_to_default_alarm.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_resubscribe_fail_and_change_to_default_alarm.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_resubscribe_fail_and_change_to_default_alarm.html"></iframe></div>
     </div>
   </div>
 
-  <!-- settlement_info_register_request -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">settlement_info_register_request</span>
-      <span class="card-name">정산 정보 입력 요청</span>
-      <span class="card-desc">정산을 위한 정산 정보 입력 요청 안내</span>
+  <div class="card" data-id="settlement_info_register_request">
+    <div class="card-header"><span class="card-id">settlement_info_register_request</span><span class="card-name">정산 정보 입력 요청</span><span class="card-desc">정산을 위한 정산 정보 입력 요청 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-settlement_info_register_request"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-settlement_info_register_request"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/settlement_info_register_request.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/settlement_info_register_request.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/settlement_info_register_request.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/settlement_info_register_request.html"></iframe></div>
     </div>
   </div>
 
-  <!-- settlement_info_update_request -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">settlement_info_update_request</span>
-      <span class="card-name">정산 정보 수정 요청</span>
-      <span class="card-desc">정산을 위한 정산 정보 수정 요청 안내</span>
+  <div class="card" data-id="settlement_info_update_request">
+    <div class="card-header"><span class="card-id">settlement_info_update_request</span><span class="card-name">정산 정보 수정 요청</span><span class="card-desc">정산을 위한 정산 정보 수정 요청 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-settlement_info_update_request"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-settlement_info_update_request"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/settlement_info_update_request.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/settlement_info_update_request.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/settlement_info_update_request.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/settlement_info_update_request.html"></iframe></div>
     </div>
   </div>
 
-  <!-- yearly_plan_alarm_before_1 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">yearly_plan_alarm_before_1</span>
-      <span class="card-name">연 플랜 만료 1일 전</span>
-      <span class="card-desc">연 결제 플랜 만료 1일 전 사이트 소유자에게 발송</span>
+  <div class="card" data-id="yearly_plan_alarm_before_1">
+    <div class="card-header"><span class="card-id">yearly_plan_alarm_before_1</span><span class="card-name">연 플랜 만료 1일 전</span><span class="card-desc">연 결제 플랜 만료 1일 전 사이트 소유자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-yearly_plan_alarm_before_1"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-yearly_plan_alarm_before_1"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/yearly_plan_alarm_before_1.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/yearly_plan_alarm_before_1.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/yearly_plan_alarm_before_1.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/yearly_plan_alarm_before_1.html"></iframe></div>
     </div>
   </div>
 
-  <!-- yearly_plan_alarm_before_15 -->
-  <div class="card">
-    <div class="card-header">
-      <span class="card-id">yearly_plan_alarm_before_15</span>
-      <span class="card-name">연 플랜 만료 15일 전</span>
-      <span class="card-desc">연 결제 플랜 만료 15일 전 사이트 소유자에게 발송</span>
+  <div class="card" data-id="yearly_plan_alarm_before_15">
+    <div class="card-header"><span class="card-id">yearly_plan_alarm_before_15</span><span class="card-name">연 플랜 만료 15일 전</span><span class="card-desc">연 결제 플랜 만료 15일 전 사이트 소유자에게 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-yearly_plan_alarm_before_15"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-yearly_plan_alarm_before_15"></span></div>
     </div>
     <div class="card-body">
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div>
-        <iframe src="/before/plan-billing/yearly_plan_alarm_before_15.html" loading="lazy"></iframe>
-      </div>
-      <div class="pane">
-        <div class="pane-header"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div>
-        <iframe src="/plan-billing/yearly_plan_alarm_before_15.html" loading="lazy"></iframe>
-      </div>
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/yearly_plan_alarm_before_15.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/yearly_plan_alarm_before_15.html"></iframe></div>
     </div>
   </div>
-
 </div><!-- /billing -->
 
 </div><!-- /page -->
@@ -759,7 +515,128 @@ function showTab(id, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
   window.scrollTo({top: 0, behavior: 'instant'});
+  loadVisibleAfterIframes();
 }
+
+/* ── 수정 전 제목 (CSV 원본) ── */
+const SUBJ_BEFORE = {
+  comment_curriculum_community: '[$%class_name%$-$%curriculum_name%$] $%target_user_name%$ 님의 커뮤니티 글에 답변이 달렸어요~',
+  comment_curriculum_homework:  '[$%class_name%$-$%curriculum_name%$] $%target_user_name%$ 님이 제출한 과제에 새로운 댓글이 작성되었어요~',
+  comment_notice:               "'$%class_name%$' 클래스 공지사항에 새로운 댓글이 작성되었습니다.",
+  comment_qna:                  '$%target_user_name%$ 님의 질문에 답변이 달렸어요~',
+  curriculum_community:         '$%class_name%$ 클래스에 새로운 글이 등록됐습니다.',
+  curriculum_homework:          "학습자가 '$%class_name%$' 클래스에 과제를 제출했습니다.",
+  notice:                       '$%user_name%$님! 학습중인 클래스에 중요한 소식이 있네요!',
+  qna:                          "'$%class_name%$' 에 새로운 글이 올라왔어요!",
+  class_attend:                 '($%class_name%$) 클래스 참가신청이 완료되었습니다. :)',
+  class_attend_cancel:          '($%class_name%$) 클래스 참가신청이 운영자에 의해 취소되었습니다.',
+  class_attend_cstm_event:      '($%class_name%$) $%L00001%$ 참가신청이 완료되었습니다. :)',
+  class_attend_payment:         '새로운 수강생이 $%class_name%$ 클래스를 신청했어요!',
+  class_attend_wait:            '[$%class_name%$] 클래스의 대기자로 신청이 완료되었습니다.',
+  class_attendee_invite:        '$%class_name%$ 클래스에 초대받았어요! 💌',
+  class_course_user_invite:     '$%class_name%$ 클래스의 강사님으로 초대합니다 💌',
+  authentication_code:          '이메일 인증 코드는 $%authentication_code%$ 입니다. ($%site_name%$)',
+  otp_code:                     '로그인 코드는 $%otp_code%$ 입니다. ($%site_name%$)',
+  reset_password:               '[$%site_name%$] 비밀번호 변경을 위한 메일을 보내드려요!',
+  seller_identity_verification: '[라이브클래스] 정산 등록 본인인증 안내',
+  channel_ex_payment_due:       '[라이브클래스] 부가서비스 결제 예정 안내',
+  channel_ex_payment_fail:      '[라이브클래스] 부가서비스 결제 실패 안내',
+  channel_ex_payment_ok:        '[라이브클래스] 부가서비스 결제 안내',
+  monthly_plan_alarm_before_1:  '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
+  monthly_plan_alarm_before_5:  '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
+  plan_alarm_attendee_70:       '[🔔 알림] 등록 가능한 수강생 수의 70%를 사용했어요!',
+  plan_alarm_attendee_90:       '[🔔 알림] 등록 가능한 수강생 수의 90%를 사용했어요!',
+  plan_alarm_attendee_100:      '[🔔 알림] 수강생을 더이상 받을 수 없어요. 플랜을 변경해보세요!',
+  plan_payment_alarm:           '[라이브클래스] 플랜 결제 내역을 알려드려요.',
+  plan_resubscribe_fail_alarm:  '[플랜 알림] 결제에 실패했어요. 무료 플랜으로 변경되기 전 확인해주세요.',
+  plan_resubscribe_fail_and_change_to_default_alarm: '[플랜 알림] 이용 중인 플랜이 종료되고 무료 플랜으로 변경되었어요.',
+  settlement_info_register_request: '[라이브클래스] 정산정보 입력 요청 안내 (지급 진행을 위해 확인이 필요합니다)',
+  settlement_info_update_request:   '[라이브클래스] 정산정보 수정 요청 안내 (지급 진행을 위해 확인이 필요합니다)',
+  yearly_plan_alarm_before_1:   '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
+  yearly_plan_alarm_before_15:  '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
+};
+
+/* ── 수정 후 제목 — 변경된 것만 덮어쓰기, 나머지는 SUBJ_BEFORE 사용 ── */
+const SUBJ_AFTER_OVERRIDES = {
+  // 커뮤니티 템플릿 제목이 변경된 경우 여기에 추가하세요
+  // comment_qna: '[$%class_name%$] $%target_user_name%$님의 질문에 답변이 달렸습니다.',
+};
+
+/* ── 예시값 (수정 후 메일 본문에 적용) ── */
+const EX = {
+  site_name:            '아무개 클래스',
+  site_headerLogoUrl:   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='40'%3E%3Crect width='168' height='40' rx='4' fill='%23E8ECF1'/%3E%3Ctext x='84' y='26' font-family='sans-serif' font-size='13' fill='%236B7280' text-anchor='middle'%3ELOGO%3C/text%3E%3C/svg%3E",
+  class_name:           '파이썬 기초 과정',
+  class_logoUrl:        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Crect width='80' height='80' rx='8' fill='%23DBEAFE'/%3E%3C/svg%3E",
+  class_url:            '#',
+  user_name:            '홍길동',
+  sender_name:          '홍길동',
+  target_user_name:     '홍길동',
+  curriculum_name:      '1강. 파이썬 기초',
+  content:              '라이브',
+  permalink:            '#',
+  classroom_sub_comment_url: '#',
+  classroom_sub_url:    '#',
+  class_view_url:       '#',
+  comment_body:         '정말 유익한 강의였어요! 다음 강의도 기대됩니다.',
+  post_body:            '안녕하세요, 이번 주 수업 일정을 안내드립니다. 오는 화요일 오후 8시에 진행되오니 참고 부탁드립니다.',
+  authentication_code:  '123456',
+  otp_code:             '987654',
+  paid_at:              '2025년 6월 25일',
+  payment_amount:       '99,000원',
+  payment_method:       '신용카드',
+  L00001:               '수업',
+  L00014:               '아무개',
+  plan_name:            '스탠다드',
+  start_at:             '2025년 6월 25일',
+  end_at:               '2025년 7월 25일',
+  repay_at:             '2025년 7월 25일',
+  pay_at:               '2025년 6월 25일',
+  pay_price:            '99,000원',
+  max_attendee:         '500명',
+  max_storage:          '10GB',
+  attendee_pay_fee:     '3%',
+  사이트이름:           '아무개 클래스',
+  부가서비스결제일:     '2025년 7월 1일',
+  부가서비스상품목록HTML: '<p style="margin:0">영상 스트리밍 — 월 9,900원</p>',
+  부가서비스이용기간시작일: '2025년 7월 1일',
+  부가서비스이용기간종료일: '2025년 7월 31일',
+};
+
+function replaceVars(html, map) {
+  return html.replace(/\$%([^%]+)%\$/g, (_, k) => (map[k] !== undefined ? map[k] : `$%${k}%$`));
+}
+
+function fillSubjects() {
+  Object.keys(SUBJ_BEFORE).forEach(id => {
+    const beforeEl = document.getElementById('before-subj-' + id);
+    const afterEl  = document.getElementById('after-subj-'  + id);
+    const beforeTxt = replaceVars(SUBJ_BEFORE[id], EX);
+    const afterTxt  = replaceVars(SUBJ_AFTER_OVERRIDES[id] || SUBJ_BEFORE[id], EX);
+    if (beforeEl) beforeEl.textContent = beforeTxt;
+    if (afterEl)  afterEl.textContent  = afterTxt;
+  });
+}
+
+const loadedSrcs = new Set();
+function loadVisibleAfterIframes() {
+  document.querySelectorAll('.category-section.visible .after-iframe').forEach(async iframe => {
+    const src = iframe.dataset.src;
+    if (!src || loadedSrcs.has(iframe)) return;
+    loadedSrcs.add(iframe);
+    try {
+      const html = await fetch(src).then(r => r.text());
+      iframe.srcdoc = replaceVars(html, EX);
+    } catch(e) {
+      iframe.srcdoc = '<p style="padding:20px;color:#94A3B8">불러오기 실패</p>';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  fillSubjects();
+  loadVisibleAfterIframes();
+});
 </script>
 </body>
 </html>
