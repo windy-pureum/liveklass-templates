@@ -54,6 +54,16 @@ header h1{font-size:1.25rem;font-weight:700}header p{opacity:.8;font-size:.83rem
 .pause-btn:hover{border-color:#ef4444;color:#ef4444}
 .pause-btn.is-paused{background:#fee2e2;border-color:#ef4444;color:#ef4444;font-weight:600}
 .is-paused-card{opacity:.55;filter:grayscale(.3)}
+.hist-btn{font-size:.7rem;padding:2px 7px;border:1px solid #e2e8f0;border-radius:5px;background:#f8fafc;cursor:pointer;color:#64748b;margin-left:6px;white-space:nowrap}
+.hist-btn:hover{border-color:#4f46e5;color:#4f46e5}
+.hist-popover{position:absolute;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.13);padding:14px;min-width:280px;max-width:420px}
+.hist-item{padding:7px 8px;border-radius:6px;border-bottom:1px solid #f1f5f9;font-size:.78rem}
+.hist-item:last-of-type{border-bottom:none}
+.hist-item:hover{background:#f8fafc}
+.hist-item-time{color:#94a3b8;font-size:.71rem}
+.hist-item-preview{color:#475569;margin-top:2px;white-space:pre-wrap;word-break:break-all;max-height:48px;overflow:hidden}
+.hist-restore-btn{font-size:.71rem;padding:2px 8px;border:1px solid #4f46e5;border-radius:5px;color:#4f46e5;background:#fff;cursor:pointer}
+.hist-restore-btn:hover{background:#4f46e5;color:#fff}
 .check-icon{font-size:.9rem}
 .card-meta{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}.tname{font-weight:600;font-size:.9rem}
 .send-count{font-size:.76rem;padding:2px 7px;border-radius:20px;font-weight:600}
@@ -117,7 +127,7 @@ header h1{font-size:1.25rem;font-weight:700}header p{opacity:.8;font-size:.83rem
 #top-btn.visible{opacity:1;pointer-events:auto}
 #top-btn:hover{transform:translateY(-3px)}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><header><div><h1>Liveklass 메시지 템플릿</h1><p>이메일 63개 · 알림톡 33개 · 중복 연결 ID 24개</p></div><div class="comment-actions"><button class="action-btn export-btn" onclick="exportComments()">💾 코멘트 내보내기</button><button class="action-btn import-btn" onclick="document.getElementById('import-input').click()">📂 코멘트 가져오기</button><input type="file" id="import-input" accept=".json" onchange="importComments(event)"></div></header><div class="stats"><div class="stat-box email"><div class="stat-num" id="email-stat-num">46</div><div class="stat-label">📧 이메일 발송중</div></div><div class="stat-box alimtok"><div class="stat-num">33</div><div class="stat-label">💬 알림톡 전체</div></div><div class="stat-box dupbox"><div class="stat-num">24</div><div class="stat-label">⚠️ 중복 연결 ID</div></div><div class="stat-box inactive"><div class="stat-num">15</div><div class="stat-label">🚫 이메일 미사용</div></div></div><div class="tabs"><button class="main-tab" onclick="showTab('tab-overview',this)">📊 푸터 규격 현황</button><button id="checked-tab-btn" class="main-tab" onclick="showTab('tab-checked',this)">🔧 개선 필요 (0)</button><button class="main-tab" onclick="showTab('tab-dup',this)">⚠️ 중복 연결 (24)</button><button class="main-tab active" onclick="showTab('tab-email',this)">📧 이메일 (46)</button><button class="main-tab" onclick="showTab('tab-alimtok',this)">💬 알림톡 전체 (33)</button><button class="main-tab" onclick="showTab('tab-inactive',this)">🚫 이메일 미사용 (15)</button><button id="compare-tab-btn" class="main-tab" onclick="showTab('tab-compare',this)">✏️ 수정 비교 (40)</button><button id="done-tab-btn" class="main-tab" onclick="showTab('tab-done',this)">✅ 수정 완료 (0)</button></div><div id="tab-overview" class="tab-content">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><header><div><h1>Liveklass 메시지 템플릿</h1><p>이메일 61개 · 알림톡 33개 · 중복 연결 ID 24개</p></div><div class="comment-actions"><button class="action-btn export-btn" onclick="exportComments()">💾 코멘트 내보내기</button><button class="action-btn import-btn" onclick="document.getElementById('import-input').click()">📂 코멘트 가져오기</button><input type="file" id="import-input" accept=".json" onchange="importComments(event)"></div></header><div class="stats"><div class="stat-box email"><div class="stat-num" id="email-stat-num">46</div><div class="stat-label">📧 이메일 발송중</div></div><div class="stat-box alimtok"><div class="stat-num">33</div><div class="stat-label">💬 알림톡 전체</div></div><div class="stat-box dupbox"><div class="stat-num">24</div><div class="stat-label">⚠️ 중복 연결 ID</div></div><div class="stat-box inactive"><div class="stat-num">15</div><div class="stat-label">🚫 이메일 미사용</div></div></div><div class="tabs"><button class="main-tab" onclick="showTab('tab-overview',this)">📊 푸터 규격 현황</button><button id="checked-tab-btn" class="main-tab" onclick="showTab('tab-checked',this)">🔧 개선 필요 (0)</button><button class="main-tab" onclick="showTab('tab-dup',this)">⚠️ 중복 연결 (24)</button><button class="main-tab active" onclick="showTab('tab-email',this)">📧 이메일 (46)</button><button class="main-tab" onclick="showTab('tab-alimtok',this)">💬 알림톡 전체 (33)</button><button class="main-tab" onclick="showTab('tab-inactive',this)">🚫 이메일 미사용 (15)</button><button id="compare-tab-btn" class="main-tab" onclick="showTab('tab-compare',this)">✏️ 수정 비교 (40)</button><button id="done-tab-btn" class="main-tab" onclick="showTab('tab-done',this)">✅ 수정 완료 (0)</button></div><div id="tab-overview" class="tab-content">
 <div style="padding:20px;max-width:960px;margin:0 auto">
 
   <!-- 범례 + 요약 -->
@@ -51827,7 +51837,7 @@ const _SB = supabase.createClient(
   'https://rdjgmbygrlctmtledzkg.supabase.co',
   'sb_publishable_VOkjWsD2i6HA_r9pLKkZWw_pbtSYclo'
 );
-const STATE = { dones: {}, checks: {}, pauses: {}, comments: {} };
+const STATE = { dones: {}, checks: {}, pauses: {}, comments: {}, cmpEdits: {} };
 function getStore()  { return STATE.comments; }
 function getDones()  { return STATE.dones; }
 function getChecks() { return STATE.checks; }
@@ -51852,6 +51862,8 @@ async function _initFromSupabase() {
     if (r.is_paused  && r.paused_at)     STATE.pauses[r.cid]   = { at: r.paused_at };
     if (r.comment)                        STATE.comments[r.cid] = { text: r.comment, updated: r.comment_updated };
   });
+  const { data: cmpData } = await _SB.from('compare_edits').select('*');
+  if (cmpData) cmpData.forEach(r => { STATE.cmpEdits[r.id] = r.content; });
   loadComments(); loadChecks(); loadDones(); loadPauses();
 }
 function _subscribeRealtime() {
@@ -51875,6 +51887,16 @@ function _subscribeRealtime() {
       syncBoxes(cid, STATE.comments[cid]?.text || '');
       updateAllMeta(cid, STATE.comments[cid]);
       updateDoneTabBtn(); updateCheckedTabBtn(); updateEmailStat(); updateCatCounts();
+    }
+  ).subscribe();
+  _SB.channel('cmp').on('postgres_changes', { event: '*', schema: 'public', table: 'compare_edits' },
+    ({ eventType, new: r, old: o }) => {
+      const id = (r?.id || o?.id);
+      if (!id) return;
+      if (eventType === 'DELETE') { delete STATE.cmpEdits[id]; }
+      else { STATE.cmpEdits[id] = r.content; }
+      const el = document.querySelector('[data-save-id="'+id+'"]');
+      if (el && el !== document.activeElement) el.textContent = STATE.cmpEdits[id] || '';
     }
   ).subscribe();
 }
@@ -54349,12 +54371,71 @@ function compareApply(){
 }
 
 /* ── 수정 후 편집 내용 저장/복원 ── */
-const CMP_EDIT_KEY = 'lk_compare_edits';
-function getCmpEdits() { try { return JSON.parse(localStorage.getItem(CMP_EDIT_KEY)) || {}; } catch { return {}; } }
+function getCmpEdits() { return STATE.cmpEdits; }
+const _cmpTimers = {};
 function saveCmpEdit(id, text) {
-  const d = getCmpEdits(); d[id] = text;
-  localStorage.setItem(CMP_EDIT_KEY, JSON.stringify(d));
+  const prev = STATE.cmpEdits[id];
+  STATE.cmpEdits[id] = text;
   showCmpToast();
+  clearTimeout(_cmpTimers[id]);
+  _cmpTimers[id] = setTimeout(async () => {
+    if (prev !== undefined && prev !== text) {
+      await _SB.from('compare_edit_history').insert({ edit_id: id, content: prev });
+    }
+    await _SB.from('compare_edits').upsert({ id, content: text, updated_at: new Date().toISOString() }, { onConflict: 'id' });
+  }, 800);
+}
+async function _showHistory(editId, anchorEl) {
+  const existing = document.getElementById('hist-popover');
+  if (existing) { existing.remove(); if (existing.dataset.editId === editId) return; }
+  const { data } = await _SB.from('compare_edit_history')
+    .select('content,saved_at').eq('edit_id', editId)
+    .order('saved_at', { ascending: false }).limit(5);
+  const pop = document.createElement('div');
+  pop.id = 'hist-popover'; pop.dataset.editId = editId; pop.className = 'hist-popover';
+  const title = document.createElement('div');
+  title.style.cssText = 'font-weight:700;font-size:.8rem;margin-bottom:10px;color:#1e293b';
+  title.textContent = '⏱ 버전 히스토리'; pop.appendChild(title);
+  if (!data || !data.length) {
+    const empty = document.createElement('div');
+    empty.style.cssText = 'color:#94a3b8;font-size:.78rem;padding:4px 0';
+    empty.textContent = '저장된 히스토리가 없습니다.'; pop.appendChild(empty);
+  } else {
+    data.forEach(row => {
+      const item = document.createElement('div'); item.className = 'hist-item';
+      const hd = document.createElement('div');
+      hd.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:2px';
+      const time = document.createElement('span'); time.className = 'hist-item-time';
+      time.textContent = new Date(row.saved_at).toLocaleString('ko-KR');
+      const rb = document.createElement('button'); rb.className = 'hist-restore-btn';
+      rb.textContent = '복원';
+      rb.onclick = () => _restoreVersion(editId, row.content || '', pop);
+      hd.appendChild(time); hd.appendChild(rb);
+      const pv = document.createElement('div'); pv.className = 'hist-item-preview';
+      const txt = row.content || '';
+      pv.textContent = txt.length > 80 ? txt.slice(0, 80) + '…' : txt;
+      item.appendChild(hd); item.appendChild(pv); pop.appendChild(item);
+    });
+  }
+  const closeRow = document.createElement('div');
+  closeRow.style.cssText = 'text-align:right;margin-top:10px';
+  const cb = document.createElement('button');
+  cb.style.cssText = 'font-size:.72rem;color:#94a3b8;cursor:pointer;background:none;border:none';
+  cb.textContent = '닫기'; cb.onclick = () => pop.remove(); closeRow.appendChild(cb); pop.appendChild(closeRow);
+  document.body.appendChild(pop);
+  const rect = anchorEl.getBoundingClientRect();
+  pop.style.top  = (rect.bottom + window.scrollY + 4) + 'px';
+  pop.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 440) + 'px';
+  setTimeout(() => {
+    document.addEventListener('click', function ch(e) {
+      if (!pop.contains(e.target) && e.target !== anchorEl) { pop.remove(); document.removeEventListener('click', ch); }
+    });
+  }, 0);
+}
+function _restoreVersion(editId, content, pop) {
+  const el = document.querySelector('[data-save-id="'+editId+'"]');
+  if (el) { el.textContent = content; saveCmpEdit(editId, content); }
+  if (pop) pop.remove();
 }
 function showCmpToast() {
   let t = document.getElementById('cmp-toast');
@@ -54382,6 +54463,10 @@ function initCompareEditable() {
       if (saved[id] !== undefined) subjEl.textContent = saved[id];
       subjEl.addEventListener('input', () => saveCmpEdit(id, subjEl.textContent));
       subjEl.addEventListener('blur', () => saveCmpEdit(id, subjEl.textContent));
+      const subjHBtn = document.createElement('button'); subjHBtn.className = 'hist-btn';
+      subjHBtn.textContent = '⏱ 히스토리';
+      subjHBtn.onclick = (e) => { e.stopPropagation(); _showHistory(id, subjHBtn); };
+      subjEl.insertAdjacentElement('afterend', subjHBtn);
     }
     if (bodyEl) {
       bodyEl.setAttribute('contenteditable', 'true');
@@ -54391,6 +54476,10 @@ function initCompareEditable() {
       if (saved[id] !== undefined) bodyEl.textContent = saved[id];
       bodyEl.addEventListener('input', () => saveCmpEdit(id, bodyEl.textContent));
       bodyEl.addEventListener('blur', () => saveCmpEdit(id, bodyEl.textContent));
+      const bodyHBtn = document.createElement('button'); bodyHBtn.className = 'hist-btn';
+      bodyHBtn.textContent = '⏱ 히스토리';
+      bodyHBtn.onclick = (e) => { e.stopPropagation(); _showHistory(id, bodyHBtn); };
+      bodyEl.insertAdjacentElement('afterend', bodyHBtn);
     }
   });
 }
