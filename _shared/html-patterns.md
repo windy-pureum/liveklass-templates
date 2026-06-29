@@ -240,6 +240,70 @@ $%post_body%$
 
 ---
 
+## 9. 본문 텍스트 블록
+
+모든 본문 텍스트는 이 블록 안에 작성합니다. 운영자/수강생에 따라 색상과 패딩이 다릅니다.
+
+### 수강생 클래스 메일 (color:#333333, padding:20px 15px)
+```html
+<div class="stb-block-outer"><table class="stb-block stb-cols-1" border="0" cellpadding="0" cellspacing="0"
+  style="overflow:hidden;margin:0px auto;padding:0px;width:100%;max-width:630px;clear:both;background:none;line-height:1.7;border:0;font-size:14px;box-sizing:border-box;" width="100%">
+<tbody><tr><td><table class="stb-cell-wrap" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td style="text-align:center;font-size:0;"><div class="stb-left-cell" style="max-width:630px;width:100%!important;margin:0;vertical-align:top;display:inline-block;"><div class="stb-text-box" style="text-align:left;margin:0px;line-height:1.7;word-break:break-word;font-size:16px;font-family:AppleSDGothic,sans-serif;color:#333333;clear:both;border:0;">
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%;"><tbody><tr><td style="padding:20px 15px;font-size:16px;line-height:1.7;color:#333333;border:0;font-family:AppleSDGothic,sans-serif;width:100%;">
+본문 텍스트 내용
+</td></tr></tbody></table></div></div></td></tr></tbody></table></td></tr></tbody></table></div>
+```
+
+### 운영자 메일 (color:#000000, padding:15px)
+```html
+<div class="stb-block-outer"><table class="stb-block stb-cols-1" border="0" cellpadding="0" cellspacing="0"
+  style="overflow:hidden;margin:0px auto;padding:0px;width:100%;max-width:630px;clear:both;background:none;line-height:1.7;border:0;font-size:14px;box-sizing:border-box;" width="100%">
+<tbody><tr><td><table class="stb-cell-wrap" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td style="text-align:center;font-size:0;"><div class="stb-left-cell" style="max-width:630px;width:100%!important;margin:0;vertical-align:top;display:inline-block;"><div class="stb-text-box" style="text-align:left;margin:0px;line-height:1.7;word-break:break-word;font-size:16px;font-family:AppleSDGothic,sans-serif;color:#000000;clear:both;border:0;">
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%;"><tbody><tr><td style="padding:15px;font-size:16px;line-height:1.7;color:#000000;border:0;font-family:AppleSDGothic,sans-serif;width:100%;">
+본문 텍스트 내용
+</td></tr></tbody></table></div></div></td></tr></tbody></table></td></tr></tbody></table></div>
+```
+
+---
+
+## 10. 인사말
+
+인사말은 본문 텍스트 블록(9번) 안의 `<td>` 내부에 `<div>` 태그로 작성합니다.
+
+### 운영자 메일 (라이브클래스 브랜드)
+```html
+<div>$%user_name%$님, 안녕하세요.</div>
+<div>라이브클래스입니다.</div>
+<div><br/></div>
+```
+
+### 수강생 클래스 메일 (사이트 브랜드)
+```html
+<div>$%user_name%$님, 안녕하세요.</div>
+<div>$%site_name%$입니다.</div>
+<div><br/></div>
+```
+
+---
+
+## 11. 수신거부 푸터 (광고성 메일 전용)
+
+광고성 메일에만 추가. `base_lk-logo_operator_unsub.html` 베이스 파일 사용 시 자동 포함됨.
+수동으로 추가할 경우, 푸터 회사 정보 텍스트 `<br/>` 바로 아래에 붙여 넣습니다.
+
+```html
+<br/>
+<span style="color:#747579;font-size:12px;">본 메일은 회원님의 수신 동의를 받아 발송된 광고성 메일입니다.</span><br/>
+<span style="color:#747579;font-size:12px;">메일 수신을 원치 않으시면 <a href="$%unsubscribe%$" style="color:#747579;font-size:12px;text-decoration:underline;font-weight:normal;" target="_blank">여기[수신거부]</a>를 클릭해 주세요.</span><br/>
+<span style="color:#747579;font-size:12px;">If you don't want to receive this e-mail anymore, <a href="$%unsubscribe%$" style="color:#747579;font-size:12px;text-decoration:underline;font-weight:normal;" target="_blank">click here</a>.</span>
+```
+
+> 변수: `$%unsubscribe%$` — Stibee에서 자동 생성하는 수신거부 링크
+
+---
+
 ## 패턴 조합 가이드
 
 | 메일 유형 | 베이스 파일 | CTA 버튼 | 스페이서 | 푸터 구분선 |
