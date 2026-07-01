@@ -68,7 +68,9 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
       <a class="tab active" href="#" onclick="showTab('community',this);return false">커뮤니티 <span class="tab-count">8</span></a>
       <a class="tab" href="#" onclick="showTab('class',this);return false">클래스 <span class="tab-count">7</span></a>
       <a class="tab" href="#" onclick="showTab('account',this);return false">계정 <span class="tab-count">3</span></a>
-      <a class="tab" href="#" onclick="showTab('billing',this);return false">요금제·결제 <span class="tab-count">13</span></a>
+      <a class="tab" href="#" onclick="showTab('billing',this);return false">요금제·결제 <span class="tab-count">7</span></a>
+      <a class="tab" href="#" onclick="showTab('limit',this);return false">한도 알림 <span class="tab-count">3</span></a>
+      <a class="tab" href="#" onclick="showTab('addon',this);return false">부가서비스 결제 <span class="tab-count">3</span></a>
       <a class="tab" href="#" onclick="showTab('settlement',this);return false">정산 <span class="tab-count">3</span></a>
     </nav>
   </div>
@@ -312,43 +314,7 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
 
 <!-- ════ 요금제·결제 ════ -->
 <div id="tab-billing" class="category-section">
-  <div class="section-header"><span class="section-title">요금제·결제</span><span class="section-count">13개 템플릿</span></div>
-
-  <div class="card" data-id="channel_ex_payment_due">
-    <div class="card-header"><span class="card-id">channel_ex_payment_due</span><span class="card-name">부가서비스 결제 예정</span><span class="card-desc">사이트 부가서비스 결제 예정 안내</span></div>
-    <div class="subject-row">
-      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_due"></span></div>
-      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_due"></span></div>
-    </div>
-    <div class="card-body">
-      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_due.html" loading="lazy"></iframe></div>
-      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_due.html"></iframe></div>
-    </div>
-  </div>
-
-  <div class="card" data-id="channel_ex_payment_fail">
-    <div class="card-header"><span class="card-id">channel_ex_payment_fail</span><span class="card-name">부가서비스 결제 실패</span><span class="card-desc">사이트 부가서비스 결제 실패 안내</span></div>
-    <div class="subject-row">
-      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_fail"></span></div>
-      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_fail"></span></div>
-    </div>
-    <div class="card-body">
-      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_fail.html" loading="lazy"></iframe></div>
-      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_fail.html"></iframe></div>
-    </div>
-  </div>
-
-  <div class="card" data-id="channel_ex_payment_ok">
-    <div class="card-header"><span class="card-id">channel_ex_payment_ok</span><span class="card-name">부가서비스 결제 성공</span><span class="card-desc">사이트 부가서비스 결제 성공 안내</span></div>
-    <div class="subject-row">
-      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_ok"></span></div>
-      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_ok"></span></div>
-    </div>
-    <div class="card-body">
-      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_ok.html" loading="lazy"></iframe></div>
-      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_ok.html"></iframe></div>
-    </div>
-  </div>
+  <div class="section-header"><span class="section-title">요금제·결제</span><span class="section-count">7개 템플릿</span></div>
 
   <div class="card" data-id="monthly_plan_alarm_before_1">
     <div class="card-header"><span class="card-id">monthly_plan_alarm_before_1</span><span class="card-name">월 플랜 만료 1일 전</span><span class="card-desc">월 결제 플랜 만료 1일 전 사이트 소유자에게 발송</span></div>
@@ -371,42 +337,6 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
     <div class="card-body">
       <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/monthly_plan_alarm_before_5.html" loading="lazy"></iframe></div>
       <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/monthly_plan_alarm_before_5.html"></iframe></div>
-    </div>
-  </div>
-
-  <div class="card" data-id="plan_alarm_attendee_70">
-    <div class="card-header"><span class="card-id">plan_alarm_attendee_70</span><span class="card-name">수강생 한도 70% 알람</span><span class="card-desc">수강생 한도 70% 사용 시 발송</span></div>
-    <div class="subject-row">
-      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_70"></span></div>
-      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_70"></span></div>
-    </div>
-    <div class="card-body">
-      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_70.html" loading="lazy"></iframe></div>
-      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_70.html"></iframe></div>
-    </div>
-  </div>
-
-  <div class="card" data-id="plan_alarm_attendee_90">
-    <div class="card-header"><span class="card-id">plan_alarm_attendee_90</span><span class="card-name">수강생 한도 90% 알람</span><span class="card-desc">수강생 한도 90% 사용 시 발송</span></div>
-    <div class="subject-row">
-      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_90"></span></div>
-      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_90"></span></div>
-    </div>
-    <div class="card-body">
-      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_90.html" loading="lazy"></iframe></div>
-      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_90.html"></iframe></div>
-    </div>
-  </div>
-
-  <div class="card" data-id="plan_alarm_attendee_100">
-    <div class="card-header"><span class="card-id">plan_alarm_attendee_100</span><span class="card-name">수강생 한도 100% 알람</span><span class="card-desc">수강생 한도 초과 시 발송</span></div>
-    <div class="subject-row">
-      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_100"></span></div>
-      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_100"></span></div>
-    </div>
-    <div class="card-body">
-      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_100.html" loading="lazy"></iframe></div>
-      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_100.html"></iframe></div>
     </div>
   </div>
 
@@ -472,6 +402,90 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
 </div><!-- /billing -->
 
 
+
+<!-- ════ 한도 알림 ════ -->
+<div id="tab-limit" class="category-section">
+  <div class="section-header"><span class="section-title">한도 알림</span><span class="section-count">3개 템플릿</span></div>
+
+  <div class="card" data-id="plan_alarm_attendee_70">
+    <div class="card-header"><span class="card-id">plan_alarm_attendee_70</span><span class="card-name">수강생 한도 70% 알람</span><span class="card-desc">수강생 한도 70% 사용 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_70"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_70"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_70.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_70.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="plan_alarm_attendee_90">
+    <div class="card-header"><span class="card-id">plan_alarm_attendee_90</span><span class="card-name">수강생 한도 90% 알람</span><span class="card-desc">수강생 한도 90% 사용 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_90"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_90"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_90.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_90.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="plan_alarm_attendee_100">
+    <div class="card-header"><span class="card-id">plan_alarm_attendee_100</span><span class="card-name">수강생 한도 100% 알람</span><span class="card-desc">수강생 한도 초과 시 발송</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-plan_alarm_attendee_100"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-plan_alarm_attendee_100"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/plan_alarm_attendee_100.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/plan_alarm_attendee_100.html"></iframe></div>
+    </div>
+  </div>
+
+</div><!-- /limit -->
+
+<!-- ════ 부가서비스 결제 ════ -->
+<div id="tab-addon" class="category-section">
+  <div class="section-header"><span class="section-title">부가서비스 결제</span><span class="section-count">3개 템플릿</span></div>
+
+  <div class="card" data-id="channel_ex_payment_due">
+    <div class="card-header"><span class="card-id">channel_ex_payment_due</span><span class="card-name">부가서비스 결제 예정</span><span class="card-desc">사이트 부가서비스 결제 예정 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_due"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_due"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_due.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_due.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="channel_ex_payment_fail">
+    <div class="card-header"><span class="card-id">channel_ex_payment_fail</span><span class="card-name">부가서비스 결제 실패</span><span class="card-desc">사이트 부가서비스 결제 실패 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_fail"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_fail"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_fail.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_fail.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="channel_ex_payment_ok">
+    <div class="card-header"><span class="card-id">channel_ex_payment_ok</span><span class="card-name">부가서비스 결제 성공</span><span class="card-desc">사이트 부가서비스 결제 성공 안내</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text" id="before-subj-channel_ex_payment_ok"></span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">수정 후 제목</span><span class="subj-text" id="after-subj-channel_ex_payment_ok"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">수정 전</span></div><iframe src="/before/plan-billing/channel_ex_payment_ok.html" loading="lazy"></iframe></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">수정 후</span></div><iframe class="after-iframe" data-src="/plan-billing/channel_ex_payment_ok.html"></iframe></div>
+    </div>
+  </div>
+
+</div><!-- /addon -->
 <!-- ════ 정산 ════ -->
 <div id="tab-settlement" class="category-section">
   <div class="section-header"><span class="section-title">정산</span><span class="section-count">3개 템플릿</span></div>
