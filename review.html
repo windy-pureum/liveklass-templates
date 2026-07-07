@@ -663,14 +663,19 @@ function replaceVars(html, map) {
   return html.replace(/\$%([^%]+)%\$/g, (_, k) => (map[k] !== undefined ? map[k] : `$%${k}%$`));
 }
 
+/* 미리보기는 예시값 대신 변수($%...%$)를 그대로 노출한다.
+   단, 이미지 URL 변수만 실제 값으로 치환해 깨진 이미지가 보이지 않게 한다. */
+const EX_IMG = {
+  site_headerLogoUrl: EX.site_headerLogoUrl,
+  class_logoUrl:      EX.class_logoUrl,
+};
+
 function fillSubjects() {
   Object.keys(SUBJ_BEFORE).forEach(id => {
     const beforeEl = document.getElementById('before-subj-' + id);
     const afterEl  = document.getElementById('after-subj-'  + id);
-    const beforeTxt = replaceVars(SUBJ_BEFORE[id], EX);
-    const afterTxt  = replaceVars(SUBJ_AFTER_OVERRIDES[id] || SUBJ_BEFORE[id], EX);
-    if (beforeEl) beforeEl.textContent = beforeTxt;
-    if (afterEl)  afterEl.textContent  = afterTxt;
+    if (beforeEl) beforeEl.textContent = SUBJ_BEFORE[id];
+    if (afterEl)  afterEl.textContent  = SUBJ_AFTER_OVERRIDES[id] || SUBJ_BEFORE[id];
   });
 }
 
@@ -682,7 +687,7 @@ function loadVisibleAfterIframes() {
     loadedSrcs.add(iframe);
     try {
       const html = await fetch(src).then(r => r.text());
-      iframe.srcdoc = replaceVars(html, EX);
+      iframe.srcdoc = replaceVars(html, EX_IMG);
     } catch(e) {
       iframe.srcdoc = '<p style="padding:20px;color:#94A3B8">불러오기 실패</p>';
     }
