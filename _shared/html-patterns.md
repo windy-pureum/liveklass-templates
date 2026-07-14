@@ -320,3 +320,53 @@ $%post_body%$
 | 수강생 클래스 | `base_site-logo_learner.html` | 일반 CTA | 50px | `padding:15px` |
 | 수강생 커뮤니티·공지 | `base_site-logo_learner.html` | 커뮤니티 CTA | 0px | `padding:5px 15px` |
 | 보안 (OTP·인증코드) | `base_no-header_common.html` | 없음 | 50px | `padding:15px` |
+
+---
+
+## 다크모드 대응 (2026-07)
+
+- 모든 메일 `<head>`에 아래 메타 추가:
+```html
+<meta name="color-scheme" content="light"/>
+<meta name="supported-color-schemes" content="light"/>
+```
+- `<body>`와 바깥 래퍼 `.stb-container-full`에 `background:#ffffff` 명시 → 다크모드에서도 흰색(라이트) 유지
+- **효과**: Apple Mail·iOS Mail 등에서 자동 색 반전 방지 (투명 로고 실종·저대비 방지)
+- **한계**: Gmail 모바일 앱의 강제 반전은 클라이언트 특성상 통제 불가
+
+---
+
+## 모바일 반응형 (2026-07)
+
+- 반응형 기준점 `640px` (`@media only screen and (max-width:640px)`)
+- **정보 테이블 값 쪼개짐 방지**: Stibee 기본 미디어쿼리의
+  `.stb-cell td, .stb-left-cell td, .stb-right-cell td { width:100% !important }`
+  규칙이 다단 정보 테이블 셀까지 100%로 강제해 값이 세로로 쪼개지던 문제 →
+  `width:auto !important`로 수정
+- **클래스 2단 레이아웃 스택**: 모바일에서 썸네일(전체폭) → 정보 카드(전체폭)로 세로 스택.
+  2단 `<td>`에 클래스 부여 후 미디어쿼리에서 전환:
+```html
+<!-- <style> 미디어쿼리 (max-width:640px) 내부 -->
+td.lk-thumb, td.lk-info { display:block !important; width:100% !important; padding:0 !important; }
+td.lk-thumb { margin-bottom:12px !important; }
+td.lk-thumb img { width:100% !important; }
+td.lk-info { background:#F8F8FB !important; border-radius:6px !important; }
+```
+
+---
+
+## VAT 표기 (결제·플랜)
+
+- 결제 **금액** → `(VAT 포함)`
+- 결제 **수수료** (`$%attendee_pay_fee%$`) → `(VAT 별도)`
+
+---
+
+## 스티비(Stibee) 삽입용 헤더/푸터 조각
+
+운영자 메일용 헤더·푸터를 스티비 HTML 편집기에 나눠 넣을 때 사용 (다크모드 방어 반영됨).
+
+| 파일 | 구성 |
+|------|------|
+| `_shared/stibee-header.html` | 퍼머링크 + 라이브클래스 로고 + 구분선 |
+| `_shared/stibee-footer.html` | 여백 + 구분선 + 저작권/고객지원 블록 |
