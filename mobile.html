@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>라이브클래스 메일 · 모바일 미리보기</title>
+<style>
+  :root{--bg:#eceff4;--surface:#fff;--frame:#0f1115;--ink:#1a1d25;--muted:#6a7183;--line:#dde1ea;--line-soft:#e9ecf2;--accent:#2E8CFF;--accent-ink:#1f6fe0;--before:#c0392b;--after:#1e8a4b;--shadow:0 1px 2px rgba(20,28,50,.06),0 8px 24px rgba(20,28,50,.06);}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",Pretendard,"Malgun Gothic",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;}
+  .top{position:sticky;top:0;z-index:20;background:rgba(236,239,244,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .top-in{max-width:1200px;margin:0 auto;padding:20px 20px 12px;display:flex;gap:20px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;}
+  .eyebrow{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--accent-ink);}
+  h1{margin:6px 0 8px;font-size:24px;font-weight:800;}
+  .lede{margin:0;max-width:52ch;font-size:13px;color:var(--muted);}
+  .lede b{color:var(--ink)}
+  .nav{margin-top:8px;font-size:12.5px}
+  .nav a{color:var(--accent-ink);text-decoration:none;font-weight:700}
+  .controls{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+  .seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:var(--shadow)}
+  .seg-b{border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:700;padding:7px 16px;border-radius:999px;cursor:pointer}
+  .seg-b.on[data-g="before"]{background:var(--before);color:#fff}
+  .seg-b.on[data-g="after"]{background:var(--after);color:#fff}
+  .bgt{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer}
+  .tabs{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;gap:2px;overflow-x:auto}
+  .tab{border:0;background:transparent;color:var(--muted);font:inherit;font-size:13.5px;font-weight:700;padding:11px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+  .tab.on{color:var(--accent-ink);border-bottom-color:var(--accent)}
+  .tab .n{font-size:11px;color:var(--muted);margin-left:5px}
+  main{max-width:1200px;margin:0 auto;padding:22px 16px 60px}
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .card-h{padding:14px 16px 12px;border-bottom:1px solid var(--line-soft);display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+  .card-t{font-size:15px;font-weight:800}
+  .card-f{font-size:11px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;margin-top:3px;word-break:break-all}
+  .tag{flex:none;font-size:10.5px;font-weight:800;padding:4px 8px;border-radius:999px;background:rgba(46,140,255,.14);color:var(--accent-ink);white-space:nowrap}
+  .subj{padding:11px 16px;border-bottom:1px solid var(--line-soft);background:rgba(236,239,244,.55);display:flex;gap:8px;align-items:baseline}
+  .subj-k{flex:none;font-size:10.5px;font-weight:800;color:var(--muted)}
+  .subj-v{font-size:12.5px;line-height:1.5;word-break:break-word}
+  .var{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:rgba(46,140,255,.15);color:var(--accent-ink);padding:1px 5px;border-radius:5px;white-space:nowrap}
+  .card-c{padding:16px;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .cseg{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:2px}
+  .cseg button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;cursor:pointer}
+  .cseg button.on[data-g="before"]{background:var(--before);color:#fff}
+  .cseg button.on[data-g="after"]{background:var(--after);color:#fff}
+  .phone{width:360px;max-width:100%;border-radius:24px;background:var(--frame);padding:8px;box-shadow:0 16px 40px rgba(0,0,0,.18)}
+  .screen{border-radius:16px;overflow:hidden;background:#fff;height:600px;position:relative}
+  .screen iframe{width:360px;max-width:100%;height:100%;border:0;display:block;background:#fff}
+  .screen .ph{position:absolute;inset:0;display:grid;place-items:center;color:#9aa;font-size:13px}
+  body.darkbg .screen{background:#0b0d11}
+  .foot{max-width:1200px;margin:0 auto;padding:0 24px 48px;color:var(--muted);font-size:12px;text-align:center}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}.controls{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div>
+      <span class="eyebrow">LIVEKLASS · MAIL QA</span>
+      <h1>모바일 미리보기</h1>
+      <p class="lede">자동 발송 메일 34종을 <b>360px 모바일 폭</b>에서 실시간 렌더링합니다. 제목·본문은 <b>실제 변수명</b>으로 표시돼요.</p>
+      <p class="nav"><a href="/review.html">← 수정 전/후 비교(review)</a> &nbsp;·&nbsp; <a href="/darkmode.html">다크모드 시뮬 →</a></p>
+    </div>
+    <div class="controls">
+      <div class="seg"><button class="seg-b" data-g="before">수정 전</button><button class="seg-b on" data-g="after">수정 후</button></div>
+      <button id="bgt" class="bgt">🌙 다크 배경</button>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+<main id="main"></main>
+<footer class="foot">라이브클래스 이메일 · 모바일(360px) 미리보기 · 실시간 fetch (자동 업데이트)</footer>
+<script>
+var CATS=[{"label": "커뮤니티", "items": [{"id": "comment_curriculum_community", "title": "커뮤니티 글 댓글", "dir": "community", "subjBefore": "[$%class_name%$-$%curriculum_name%$] $%target_user_name%$ 님의 커뮤니티 글에 답변이 달렸어요~", "subjAfter": "[$%site_name%$] $%class_name%$ - 댓글이 달렸습니다."}, {"id": "comment_curriculum_homework", "title": "과제 댓글", "dir": "community", "subjBefore": "[$%class_name%$-$%curriculum_name%$] $%target_user_name%$ 님이 제출한 과제에 새로운 댓글이 작성되었어요~", "subjAfter": "[$%site_name%$] $%class_name%$ - 제출한 과제에 답변이 달렸습니다."}, {"id": "comment_notice", "title": "공지 댓글", "dir": "community", "subjBefore": "'$%class_name%$' 클래스 공지사항에 새로운 댓글이 작성되었습니다.", "subjAfter": "[$%site_name%$] $%class_name%$ - 공지사항에 댓글이 달렸습니다."}, {"id": "comment_qna", "title": "Q&A 답변", "dir": "community", "subjBefore": "$%target_user_name%$ 님의 질문에 답변이 달렸어요~", "subjAfter": "$%target_user_name%$ 님의 질문에 답변이 달렸어요~"}, {"id": "curriculum_community", "title": "커뮤니티 새 글", "dir": "community", "subjBefore": "$%class_name%$ 클래스에 새로운 글이 등록됐습니다.", "subjAfter": "[$%site_name%$] $%class_name%$ - 커뮤니티에 새로운 글이 등록되었습니다."}, {"id": "curriculum_homework", "title": "과제 제출", "dir": "community", "subjBefore": "학습자가 '$%class_name%$' 클래스에 과제를 제출했습니다.", "subjAfter": "[$%site_name%$] $%class_name%$ - $%sender_name%$님이 과제를 제출했습니다."}, {"id": "notice", "title": "새 공지", "dir": "community", "subjBefore": "$%user_name%$님! 학습중인 클래스에 중요한 소식이 있네요!", "subjAfter": "[$%site_name%$] $%class_name%$ - 새로운 공지사항이 등록되었습니다."}, {"id": "qna", "title": "Q&A 새 글", "dir": "community", "subjBefore": "'$%class_name%$' 에 새로운 글이 올라왔어요!", "subjAfter": "[$%site_name%$] $%class_name%$ - Q&A에 새로운 글이 등록되었습니다."}]}, {"label": "클래스", "items": [{"id": "class_attend", "title": "수강신청 완료", "dir": "class", "subjBefore": "($%class_name%$) 클래스 참가신청이 완료되었습니다. :)", "subjAfter": "[수강 안내] $%class_name%$ 클래스 참가신청이 완료되었습니다."}, {"id": "class_attend_cancel", "title": "수강신청 취소", "dir": "class", "subjBefore": "($%class_name%$) 클래스 참가신청이 운영자에 의해 취소되었습니다.", "subjAfter": "[수강 안내] $%class_name%$ 클래스 참가신청이 취소되었습니다."}, {"id": "class_attend_cstm_event", "title": "신청 완료(커스텀)", "dir": "class", "subjBefore": "($%class_name%$) $%L00001%$ 참가신청이 완료되었습니다. :)", "subjAfter": "[수강 안내] $%class_name%$ $%L00001%$ 참가신청이 완료되었습니다."}, {"id": "class_attend_payment", "title": "신규 수강신청 알림", "dir": "class", "subjBefore": "새로운 수강생이 $%class_name%$ 클래스를 신청했어요!", "subjAfter": "[수강 안내] $%sender_name%$님이 $%class_name%$ 클래스에 신청했습니다."}, {"id": "class_attend_wait", "title": "대기자 신청", "dir": "class", "subjBefore": "[$%class_name%$] 클래스의 대기자로 신청이 완료되었습니다.", "subjAfter": "[수강 안내] $%class_name%$ 클래스 대기자로 신청이 완료되었습니다."}, {"id": "class_attendee_invite", "title": "클래스 초대", "dir": "class", "subjBefore": "$%class_name%$ 클래스에 초대받았어요! 💌", "subjAfter": "[클래스 초대] $%class_name%$ 클래스에 초대되었습니다."}, {"id": "class_course_user_invite", "title": "강사 초대", "dir": "class", "subjBefore": "$%class_name%$ 클래스의 강사님으로 초대합니다 💌", "subjAfter": "[클래스 초대] $%class_name%$ 클래스의 강사로 초대되었습니다."}]}, {"label": "계정", "items": [{"id": "authentication_code", "title": "이메일 인증코드", "dir": "account", "subjBefore": "이메일 인증 코드는 $%authentication_code%$ 입니다. ($%site_name%$)", "subjAfter": "[$%site_name%$] 이메일 인증 코드는 $%authentication_code%$입니다."}, {"id": "otp_code", "title": "로그인 코드", "dir": "account", "subjBefore": "로그인 코드는 $%otp_code%$ 입니다. ($%site_name%$)", "subjAfter": "[$%site_name%$] 로그인 코드는 $%otp_code%$입니다."}, {"id": "reset_password", "title": "비밀번호 재설정", "dir": "account", "subjBefore": "[$%site_name%$] 비밀번호 변경을 위한 메일을 보내드려요!", "subjAfter": "[$%site_name%$] 비밀번호 재설정 링크를 보내드립니다."}, {"id": "seller_identity_verification", "title": "정산 본인인증", "dir": "account", "subjBefore": "[라이브클래스] 정산 등록 본인인증 안내", "subjAfter": "[정산 안내] 정산 등록 본인인증 안내"}]}, {"label": "요금제·결제", "items": [{"id": "channel_ex_payment_due", "title": "부가서비스 결제예정", "dir": "plan-billing", "subjBefore": "[라이브클래스] 부가서비스 결제 예정 안내", "subjAfter": "[결제 안내] $%사이트이름%$ 부가서비스 결제 예정 안내"}, {"id": "channel_ex_payment_fail", "title": "부가서비스 결제실패", "dir": "plan-billing", "subjBefore": "[라이브클래스] 부가서비스 결제 실패 안내", "subjAfter": "[라이브클래스] 부가서비스 결제 실패 안내"}, {"id": "channel_ex_payment_ok", "title": "부가서비스 결제완료", "dir": "plan-billing", "subjBefore": "[라이브클래스] 부가서비스 결제 안내", "subjAfter": "[결제 안내] $%사이트이름%$ 부가서비스 결제가 완료되었습니다."}, {"id": "monthly_plan_alarm_before_1", "title": "월플랜 연장 1일전", "dir": "plan-billing", "subjBefore": "[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.", "subjAfter": "[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 내일 자동 결제됩니다."}, {"id": "monthly_plan_alarm_before_5", "title": "월플랜 연장 5일전", "dir": "plan-billing", "subjBefore": "[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.", "subjAfter": "[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 5일 후 자동 결제됩니다."}, {"id": "plan_alarm_attendee_100", "title": "수강생 한도 100%", "dir": "plan-billing", "subjBefore": "(광고) [한도 안내] 수강생을 더이상 받을 수 없어요. 플랜을 변경해보세요!", "subjAfter": "[안내] 수강생 등록 한도에 도달했습니다"}, {"id": "plan_alarm_attendee_70", "title": "수강생 한도 70%", "dir": "plan-billing", "subjBefore": "(광고) [한도 안내] 등록 가능한 수강생 수의 70%를 사용했어요!", "subjAfter": "[안내] 수강생 등록 한도의 70%를 사용하셨습니다"}, {"id": "plan_alarm_attendee_90", "title": "수강생 한도 90%", "dir": "plan-billing", "subjBefore": "(광고) [한도 안내] 등록 가능한 수강생 수의 90%를 사용했어요!", "subjAfter": "[안내] 수강생 등록 한도가 얼마 남지 않았습니다"}, {"id": "plan_payment_alarm", "title": "플랜 결제완료", "dir": "plan-billing", "subjBefore": "[라이브클래스] 플랜 결제 내역을 알려드려요.", "subjAfter": "[결제 안내] $%plan_name%$ 플랜 결제가 완료되었습니다."}, {"id": "plan_resubscribe_fail_alarm", "title": "재결제 실패", "dir": "plan-billing", "subjBefore": "[플랜 알림] 결제에 실패했어요. 무료 플랜으로 변경되기 전 확인해주세요.", "subjAfter": "[결제 실패] 결제 정보를 확인해 주세요."}, {"id": "plan_resubscribe_fail_and_change_to_default_alarm", "title": "플랜 종료·무료전환", "dir": "plan-billing", "subjBefore": "[플랜 알림] 이용 중인 플랜이 종료되고 무료 플랜으로 변경되었어요.", "subjAfter": "[플랜 변경] 이용 중인 플랜이 종료되어 무료 플랜으로 변경되었어요."}, {"id": "settlement_info_register_request", "title": "정산정보 입력요청", "dir": "plan-billing", "subjBefore": "[라이브클래스] 정산정보 입력 요청 안내 (지급 진행을 위해 확인이 필요합니다)", "subjAfter": "[정산 안내] 정산 정보 입력 요청 안내 (지급 진행을 위해 확인이 필요합니다)"}, {"id": "settlement_info_update_request", "title": "정산정보 수정요청", "dir": "plan-billing", "subjBefore": "[라이브클래스] 정산정보 수정 요청 안내 (지급 진행을 위해 확인이 필요합니다)", "subjAfter": "[정산 안내] 정산 정보 수정 요청 안내 (지급 진행을 위해 확인이 필요합니다)"}, {"id": "yearly_plan_alarm_before_1", "title": "연플랜 연장 1일전", "dir": "plan-billing", "subjBefore": "[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.", "subjAfter": "[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 내일 자동 결제됩니다."}, {"id": "yearly_plan_alarm_before_15", "title": "연플랜 연장 15일전", "dir": "plan-billing", "subjBefore": "[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.", "subjAfter": "[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 15일 후 자동 결제됩니다."}]}], EX_IMG={"site_headerLogoUrl": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='168'%20height='40'%3E%3Crect%20width='168'%20height='40'%20fill='%23e8e8e8'/%3E%3Ctext%20x='84'%20y='25'%20font-size='14'%20text-anchor='middle'%20fill='%23999'%3ELiveKlass%3C/text%3E%3C/svg%3E", "class_logoUrl": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%3E%3Crect%20width='400'%20height='300'%20fill='%23d9dbe0'/%3E%3Ctext%20x='200'%20y='158'%20font-size='26'%20text-anchor='middle'%20fill='%23888'%3E%ED%81%B4%EB%9E%98%EC%8A%A4%20%EC%8D%B8%EB%84%A4%EC%9D%BC%3C/text%3E%3C/svg%3E"};
+var main=document.getElementById('main'),tabsEl=document.getElementById('tabs');
+var g='after',active=0;
+function replaceVars(h,m){return h.replace(/\$%([^%]+)%\$/g,function(_,k){return m[k]!==undefined?m[k]:'$%'+k+'%$';});}
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function chips(t){return esc(t).replace(/\$%[^%]+%\$/g,function(m){return '<span class="var">'+m+'</span>';});}
+function subjOf(it){return g==='before'?it.subjBefore:it.subjAfter;}
+function isTable(){return false;}
+CATS.forEach(function(c,i){var b=document.createElement('button');b.className='tab'+(i===0?' on':'');b.innerHTML=c.label+'<span class="n">'+c.items.length+'</span>';b.onclick=function(){active=i;render();[].forEach.call(tabsEl.children,function(x,xi){x.classList.toggle('on',xi===i)});};tabsEl.appendChild(b);});
+[].forEach.call(document.querySelectorAll('.seg-b'),function(btn){btn.onclick=function(){g=btn.dataset.g;document.querySelectorAll('.seg-b').forEach(function(x){x.classList.toggle('on',x.dataset.g===g)});document.querySelectorAll('.card').forEach(function(c){setCard(c)});};});
+document.getElementById('bgt').onclick=function(){var on=document.body.classList.toggle('darkbg');this.textContent=on?'☀️ 라이트 배경':'🌙 다크 배경';};
+function pathOf(it){return (g==='before'?'/before/':'/')+it.dir+'/'+it.id+'.html';}
+function setCard(card){var it=card._it;card.querySelectorAll('.cseg button').forEach(function(x){x.classList.toggle('on',x.dataset.g===g)});card.querySelector('.subj-v').innerHTML=chips(subjOf(it));card._loaded=null;load(card);}
+function load(card){if(!card._vis)return;var key=g;if(card._loaded===key)return;card._loaded=key;var ph=card.querySelector('.ph');if(ph)ph.style.display='';fetch(pathOf(card._it)).then(function(r){return r.text();}).then(function(h){if(card._loaded!==key)return;card._frame.srcdoc=replaceVars(h,EX_IMG);}).catch(function(){card._frame.srcdoc='<p style="padding:20px;color:#94A3B8">불러오기 실패</p>';});}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target._vis=true;load(e.target);}});},{rootMargin:'400px'});
+function render(){main.innerHTML='';io.disconnect();var wrap=document.createElement('div');wrap.className='grid';
+CATS[active].items.forEach(function(it){var card=document.createElement('div');card.className='card';card._it=it;
+card.innerHTML='<div class="card-h"><div><div class="card-t"></div><div class="card-f"></div></div><span class="tag">'+it.dir+'</span></div>'+
+'<div class="subj"><span class="subj-k">제목</span><span class="subj-v"></span></div>'+
+'<div class="card-c"><div class="cseg"><button data-g="before">수정 전</button><button data-g="after" class="on">수정 후</button></div>'+
+'<div class="phone"><div class="screen"><div class="ph">불러오는 중…</div><iframe loading="lazy"></iframe></div></div></div>';
+card.querySelector('.card-t').textContent=it.title;card.querySelector('.card-f').textContent=it.id+'.html';
+card.querySelector('.subj-v').innerHTML=chips(subjOf(it));
+card._frame=card.querySelector('iframe');
+card._frame.addEventListener('load',function(){var ph=card.querySelector('.ph');if(ph)ph.style.display='none';});
+card.querySelectorAll('.cseg button').forEach(function(btn){btn.classList.toggle('on',btn.dataset.g===g);btn.onclick=function(){g=btn.dataset.g;document.querySelectorAll('.seg-b').forEach(function(x){x.classList.toggle('on',x.dataset.g===g)});document.querySelectorAll('.card').forEach(function(c){setCard(c)});};});
+wrap.appendChild(card);io.observe(card);});
+main.appendChild(wrap);}
+render();
+</script>
+</body>
+</html>

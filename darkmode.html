@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>라이브클래스 메일 · 다크모드 시뮬레이션</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#0d0f13;color:#e8eaf0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",sans-serif;padding:28px 20px 60px}
+  header{max-width:1100px;margin:0 auto 24px}
+  .eyebrow{font-size:11px;letter-spacing:.16em;font-weight:700;color:#4d9bff}
+  h1{margin:6px 0 10px;font-size:26px;font-weight:800}
+  .lede{margin:0;max-width:62ch;font-size:14px;color:#9aa2b3;line-height:1.6}
+  .lede b{color:#e8eaf0}
+  .nav{margin-top:10px;font-size:12.5px}.nav a{color:#4d9bff;text-decoration:none;font-weight:700}
+  main{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+  .grp h2{font-size:16px;font-weight:800;margin:0 0 14px;color:#cfd3dc}
+  .pair{display:flex;gap:24px;flex-wrap:wrap}
+  .col{flex:1;min-width:320px}
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;margin-bottom:10px}
+  .keep{background:#1e8a4b;color:#fff}.inv{background:#c0392b;color:#fff}
+  .note{font-size:12.5px;color:#9aa2b3;margin:8px 0 0;line-height:1.5}
+  .dev{width:360px;max-width:100%;border-radius:24px;background:#000;padding:8px;box-shadow:0 12px 34px rgba(0,0,0,.55)}
+  .scr{border-radius:16px;overflow:hidden;height:600px;background:#fff}
+  .scr iframe{width:360px;max-width:100%;height:100%;border:0;display:block;background:#fff}
+  .scr.i iframe{filter:invert(.92) hue-rotate(180deg)}
+  .disc{max-width:1100px;margin:34px auto 0;font-size:12.5px;color:#7f8798;line-height:1.6;border-top:1px solid #23262e;padding-top:16px}
+  code{background:#1c1f26;padding:1px 6px;border-radius:5px;font-size:11.5px}
+</style>
+</head>
+<body>
+<header>
+  <span class="eyebrow">LIVEKLASS · DARK MODE</span>
+  <h1>다크모드 시뮬레이션</h1>
+  <p class="lede">같은 메일이 다크모드에서 클라이언트별로 어떻게 보이는지 비교합니다. 왼쪽이 <b>메타(color-scheme:light)로 노리는 방어 결과</b>, 오른쪽은 <b>통제 불가한 강제 반전</b>(근사치)입니다.</p>
+  <p class="nav"><a href="/review.html">← 비교(review)</a> &nbsp;·&nbsp; <a href="/mobile.html">모바일 미리보기 →</a></p>
+</header>
+<main id="main"></main>
+<p class="disc">⚠️ 오른쪽 "강제 반전"은 브라우저 CSS <code>invert</code>로 흉내 낸 <b>근사치</b>입니다. 실제 Gmail 앱은 이미지를 일부 보존하는 등 조금 다르게 동작합니다.</p>
+<script>
+var EX_IMG={"site_headerLogoUrl": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='168'%20height='40'%3E%3Crect%20width='168'%20height='40'%20fill='%23e8e8e8'/%3E%3Ctext%20x='84'%20y='25'%20font-size='14'%20text-anchor='middle'%20fill='%23999'%3ELiveKlass%3C/text%3E%3C/svg%3E", "class_logoUrl": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%3E%3Crect%20width='400'%20height='300'%20fill='%23d9dbe0'/%3E%3Ctext%20x='200'%20y='158'%20font-size='26'%20text-anchor='middle'%20fill='%23888'%3E%ED%81%B4%EB%9E%98%EC%8A%A4%20%EC%8D%B8%EB%84%A4%EC%9D%BC%3C/text%3E%3C/svg%3E"};
+var PICKS=[{title:"플랜 결제완료",dir:"plan-billing",id:"plan_payment_alarm"},{title:"수강신청 완료",dir:"class",id:"class_attend"}];
+function replaceVars(h,m){return h.replace(/\$%([^%]+)%\$/g,function(_,k){return m[k]!==undefined?m[k]:'$%'+k+'%$';});}
+var main=document.getElementById('main');
+PICKS.forEach(function(d){
+  var g=document.createElement('div');g.className='grp';
+  g.innerHTML='<h2>'+d.title+' <span style="color:#7f8798;font-weight:500;font-size:12px">'+d.id+'.html</span></h2>'+
+  '<div class="pair"><div class="col"><span class="tag keep">Apple·iOS Mail (메타 적용 → 밝게 유지)</span><div class="dev"><div class="scr"><iframe></iframe></div></div><p class="note">우리 목표. 흰 메일이 다크 배경 위에 그대로 — 색 왜곡 없이 읽힘.</p></div>'+
+  '<div class="col"><span class="tag inv">Gmail 앱 (강제 반전 · 근사치)</span><div class="dev"><div class="scr i"><iframe></iframe></div></div><p class="note">통제 불가. 배경·글자·버튼·브랜드 색이 반전됨.</p></div></div>';
+  main.appendChild(g);
+  var ifr=g.querySelectorAll('iframe');
+  fetch('/'+d.dir+'/'+d.id+'.html').then(function(r){return r.text();}).then(function(h){var s=replaceVars(h,EX_IMG);ifr[0].srcdoc=s;ifr[1].srcdoc=s;});
+});
+</script>
+</body>
+</html>
