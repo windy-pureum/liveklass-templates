@@ -596,6 +596,19 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
     </div>
   </div>
 
+
+  <div class="card" data-id="subscription_renew_alarm">
+    <div class="card-header"><span class="card-id">subscription_renew_alarm</span><span class="card-name">정기구독 갱신 알림 (수강생)</span><span class="card-desc">정기구독 자동 결제 성공 시 수강생에게 발송</span><span style="font-size:11px;background:#EFF6FF;color:#2E8CFF;border-radius:20px;padding:2px 8px;font-weight:600;margin-left:auto;">NEW</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text loading">신규 메일</span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">제목</span><span class="subj-text" id="after-subj-subscription_renew_alarm"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">이전 버전 없음</span></div><div style="height:580px;display:flex;align-items:center;justify-content:center;background:#FAFAFA;"><span style="font-size:13px;color:#CBD5E1;">신규 메일 — 이전 버전 없음</span></div></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">신규</span></div><iframe class="after-iframe" data-src="/subscription/subscription_renew_alarm.html"></iframe></div>
+    </div>
+  </div>
+
 </div><!-- /subscription -->
 
 </div><!-- /page -->
@@ -650,6 +663,7 @@ const SUBJ_BEFORE = {
   subscription_expired:                 '—',
   subscription_new_creator_alarm:       '—',
   subscription_new_learner_alarm:       '—',
+  subscription_renew_alarm:             '—',
   yearly_plan_alarm_before_1:   '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
   yearly_plan_alarm_before_15:  '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
 };
@@ -694,6 +708,7 @@ const SUBJ_AFTER_OVERRIDES = {
   subscription_expired:                             '[$%site_name%$] $%class_name%$ 구독이 종료되었습니다',
   subscription_new_creator_alarm:                   '[수강 안내] $%site_name%$ - $%attendee_name%$님이 $%class_name%$ 정기구독을 시작했습니다',
   subscription_new_learner_alarm:                   '[$%site_name%$] $%class_name%$ 정기구독이 시작되었습니다',
+  subscription_renew_alarm:                         '[$%site_name%$] $%class_name%$ 정기구독이 갱신되었습니다',
   yearly_plan_alarm_before_1:                       '[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 내일 자동 결제됩니다.',
   yearly_plan_alarm_before_15:                      '[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 15일 후 자동 결제됩니다.',
   // 제목 변경
