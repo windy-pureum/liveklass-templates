@@ -42,9 +42,7 @@
 <div class="stb-block-outer"><table border="0" cellpadding="0" cellspacing="0" class="stb-block stb-cols-1" style="overflow:hidden;margin:0px auto;padding:0px;width:100%;max-width:630px;clear:both;background:none;line-height:1.7;border:0;font-size:14px;box-sizing:border-box;" width="100%"><tbody><tr><td><table border="0" cellpadding="0" cellspacing="0" class="stb-cell-wrap" width="100%"><tbody><tr><td style="text-align:center;font-size:0;"><div class="stb-left-cell" style="max-width:630px;width:100%!important;margin:0;vertical-align:top;display:inline-block;"><div class="stb-text-box" style="text-align:left;margin:0px;line-height:1.7;word-break:break-word;font-size:16px;font-family:AppleSDGothic,sans-serif;color:#333333;clear:both;border:0;"><table border="0" cellpadding="0" cellspacing="0" style="width:100%;"><tbody><tr><td style="padding:20px 15px;font-size:16px;line-height:1.7;color:#333333;border:0;font-family:AppleSDGothic,sans-serif;width:100%;">
 <div>$%user_name%$님, 안녕하세요.<br/>$%site_name%$입니다.</div>
 <div><br/></div>
-<div>구독 해지 요청에 따라 <b>"$%class_name%$"</b> 결제 금액이 전액 환불되며, 구독 및 이용 권한이 즉시 종료되었습니다.</div>
-<div><br/></div>
-<div>환불은 결제하신 수단으로 영업일 기준 3~5일 내 처리됩니다.</div>
+<div><b>"$%class_name%$"</b> 정기구독이 시작되었습니다.<br/>다음 결제일에 자동으로 갱신됩니다.</div>
 </td></tr></tbody></table></div></div></td></tr></tbody></table></td></tr></tbody></table></div>
 
 <!-- 구독 정보 카드 -->
@@ -56,19 +54,23 @@
   <td style="padding:5px 0;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#1a1a2e;text-align:right;word-break:break-word;">$%class_name%$</td>
 </tr>
 <tr>
-  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#6d6b6d;white-space:nowrap;width:1px;">환불 금액</td>
+  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#6d6b6d;white-space:nowrap;width:1px;">결제 금액</td>
   <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#1a1a2e;text-align:right;">$%payment_amount%$ (VAT 포함)</td>
 </tr>
 <tr>
-  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#6d6b6d;white-space:nowrap;width:1px;">환불 수단</td>
-  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#1a1a2e;text-align:right;">$%refund_method%$</td>
+  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#6d6b6d;white-space:nowrap;width:1px;">결제 수단</td>
+  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#1a1a2e;text-align:right;">$%payment_method%$</td>
+</tr>
+<tr>
+  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#6d6b6d;white-space:nowrap;width:1px;">다음 결제일</td>
+  <td style="padding:5px 0;border-top:1px solid #dddddd;font-family:AppleSDGothic,sans-serif;font-size:14px;color:#1a1a2e;text-align:right;">$%next_pay_at%$</td>
 </tr>
 </tbody></table>
 </td></tr></tbody></table>
 </div></div></td></tr></tbody></table></td></tr></tbody></table></div>
 
 <!-- CTA 버튼 -->
-<div class="stb-block-outer"><table border="0" cellpadding="0" cellspacing="0" class="stb-block stb-cols-1" style="overflow:hidden;margin:0px auto;padding:0px;width:100%;max-width:630px;clear:both;background:none;line-height:1.7;border:0;font-size:14px;box-sizing:border-box;" width="100%"><tbody><tr><td><table border="0" cellpadding="0" cellspacing="0" class="stb-cell-wrap" width="100%"><tbody><tr><td style="text-align:center;font-size:0;"><div class="stb-left-cell" style="max-width:630px;width:100%!important;margin:0;vertical-align:top;display:inline-block;"><div class="stb-cta-box" style="clear:both;"><table border="0" cellpadding="0" cellspacing="0" style="width:100%;"><tbody><tr><td style="padding:32px 15px 15px;border:0;width:100%;text-align:center;"><table border="0" cellpadding="0" cellspacing="0" class="stb-cell-wrap-cta" style="border-collapse:separate!important;background:#2E8CFF;border-radius:8px;border:0;margin:0 auto;table-layout:fixed;" align="center"><tbody><tr><td style="padding:14px 20px 11px;" align="center"><a href="$%channel_sub_payment_url%$" style="font-size:16px;display:inline;color:#ffffff;font-weight:bold;text-decoration:none;outline:0;font-family:AppleSDGothic,sans-serif;text-align:center;" target="_blank">신청 내역 확인하기</a></td></tr></tbody></table></td></tr></tbody></table></div></div></td></tr></tbody></table></td></tr></tbody></table></div>
+<div class="stb-block-outer"><table border="0" cellpadding="0" cellspacing="0" class="stb-block stb-cols-1" style="overflow:hidden;margin:0px auto;padding:0px;width:100%;max-width:630px;clear:both;background:none;line-height:1.7;border:0;font-size:14px;box-sizing:border-box;" width="100%"><tbody><tr><td><table border="0" cellpadding="0" cellspacing="0" class="stb-cell-wrap" width="100%"><tbody><tr><td style="text-align:center;font-size:0;"><div class="stb-left-cell" style="max-width:630px;width:100%!important;margin:0;vertical-align:top;display:inline-block;"><div class="stb-cta-box" style="clear:both;"><table border="0" cellpadding="0" cellspacing="0" style="width:100%;"><tbody><tr><td style="padding:32px 15px 15px;border:0;width:100%;text-align:center;"><table border="0" cellpadding="0" cellspacing="0" class="stb-cell-wrap-cta" style="border-collapse:separate!important;background:#2E8CFF;border-radius:8px;border:0;margin:0 auto;table-layout:fixed;" align="center"><tbody><tr><td style="padding:14px 20px 11px;" align="center"><a href="$%channel_sub_payment_url%$" style="font-size:16px;display:inline;color:#ffffff;font-weight:bold;text-decoration:none;outline:0;font-family:AppleSDGothic,sans-serif;text-align:center;" target="_blank">구독 내역 확인하기</a></td></tr></tbody></table></td></tr></tbody></table></div></div></td></tr></tbody></table></td></tr></tbody></table></div>
 
 <!-- 하단 여백 -->
 <div class="stb-block-outer"><table border="0" cellpadding="0" cellspacing="0" class="stb-block stb-cols-1" style="overflow:hidden;margin:0px auto;padding:0px;width:100%;max-width:630px;clear:both;line-height:1.7;border:0;font-size:14px;box-sizing:border-box;" width="100%"><tbody><tr><td><table border="0" cellpadding="0" cellspacing="0" class="stb-cell-wrap" width="100%"><tbody><tr><td style="text-align:center;font-size:0;"><table border="0" cellpadding="0" cellspacing="0" class="stb-cell" width="100%"><tbody><tr><td style="height:50px"></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></div>
