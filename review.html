@@ -76,6 +76,7 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
       <a class="tab" href="#" onclick="showTab('limit',this);return false">한도 알림 <span class="tab-count">3</span></a>
       <a class="tab" href="#" onclick="showTab('addon',this);return false">부가서비스 결제 <span class="tab-count">3</span></a>
       <a class="tab" href="#" onclick="showTab('settlement',this);return false">정산 <span class="tab-count">3</span></a>
+      <a class="tab" href="#" onclick="showTab('subscription',this);return false">정기결제 <span class="tab-count">4</span></a>
     </nav>
   </div>
 </div>
@@ -531,6 +532,60 @@ body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;b
   </div>
 </div><!-- /settlement -->
 
+<!-- ════ 정기결제 ════ -->
+<div id="tab-subscription" class="category-section">
+  <div class="section-header"><span class="section-title">정기결제</span><span class="section-count">4개 템플릿 (신규)</span></div>
+
+  <div class="card" data-id="subscription_cancel_reserved">
+    <div class="card-header"><span class="card-id">subscription_cancel_reserved</span><span class="card-name">정기구독 해지 예약</span><span class="card-desc">해지 예약 완료 시 수강생에게 발송</span><span style="font-size:11px;background:#EFF6FF;color:#2E8CFF;border-radius:20px;padding:2px 8px;font-weight:600;margin-left:auto;">NEW</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text loading">신규 메일</span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">제목</span><span class="subj-text" id="after-subj-subscription_cancel_reserved"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">이전 버전 없음</span></div><div style="height:580px;display:flex;align-items:center;justify-content:center;background:#FAFAFA;"><span style="font-size:13px;color:#CBD5E1;">신규 메일 — 이전 버전 없음</span></div></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">신규</span></div><iframe class="after-iframe" data-src="/subscription/subscription_cancel_reserved.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="subscription_cancel_refund_complete">
+    <div class="card-header"><span class="card-id">subscription_cancel_refund_complete</span><span class="card-name">정기구독 즉시 해지 · 환불</span><span class="card-desc">즉시 해지 및 전액 환불 완료 시 수강생에게 발송</span><span style="font-size:11px;background:#EFF6FF;color:#2E8CFF;border-radius:20px;padding:2px 8px;font-weight:600;margin-left:auto;">NEW</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text loading">신규 메일</span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">제목</span><span class="subj-text" id="after-subj-subscription_cancel_refund_complete"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">이전 버전 없음</span></div><div style="height:580px;display:flex;align-items:center;justify-content:center;background:#FAFAFA;"><span style="font-size:13px;color:#CBD5E1;">신규 메일 — 이전 버전 없음</span></div></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">신규</span></div><iframe class="after-iframe" data-src="/subscription/subscription_cancel_refund_complete.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="subscription_expired">
+    <div class="card-header"><span class="card-id">subscription_expired</span><span class="card-name">정기구독 만료</span><span class="card-desc">결제 실패 반복으로 구독 만료 시 수강생에게 발송</span><span style="font-size:11px;background:#EFF6FF;color:#2E8CFF;border-radius:20px;padding:2px 8px;font-weight:600;margin-left:auto;">NEW</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text loading">신규 메일</span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">제목</span><span class="subj-text" id="after-subj-subscription_expired"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">이전 버전 없음</span></div><div style="height:580px;display:flex;align-items:center;justify-content:center;background:#FAFAFA;"><span style="font-size:13px;color:#CBD5E1;">신규 메일 — 이전 버전 없음</span></div></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">신규</span></div><iframe class="after-iframe" data-src="/subscription/subscription_expired.html"></iframe></div>
+    </div>
+  </div>
+
+  <div class="card" data-id="subscription_new_creator_alarm">
+    <div class="card-header"><span class="card-id">subscription_new_creator_alarm</span><span class="card-name">신규 정기구독 알림 (운영자)</span><span class="card-desc">수강생이 정기구독 시작 시 운영자에게 발송</span><span style="font-size:11px;background:#EFF6FF;color:#2E8CFF;border-radius:20px;padding:2px 8px;font-weight:600;margin-left:auto;">NEW</span></div>
+    <div class="subject-row">
+      <div class="subj-pane before"><span class="subj-label">수정 전 제목</span><span class="subj-text loading">신규 메일</span></div>
+      <div class="subj-pane after"><span class="subj-label after-lbl">제목</span><span class="subj-text" id="after-subj-subscription_new_creator_alarm"></span></div>
+    </div>
+    <div class="card-body">
+      <div class="pane"><div class="pane-header"><span class="pane-dot before"></span><span class="pane-label before">이전 버전 없음</span></div><div style="height:580px;display:flex;align-items:center;justify-content:center;background:#FAFAFA;"><span style="font-size:13px;color:#CBD5E1;">신규 메일 — 이전 버전 없음</span></div></div>
+      <div class="pane"><div class="pane-header after-hdr"><span class="pane-dot after"></span><span class="pane-label after">신규</span></div><iframe class="after-iframe" data-src="/subscription/subscription_new_creator_alarm.html"></iframe></div>
+    </div>
+  </div>
+
+</div><!-- /subscription -->
+
 </div><!-- /page -->
 
 <script>
@@ -577,6 +632,11 @@ const SUBJ_BEFORE = {
   plan_resubscribe_fail_and_change_to_default_alarm: '[플랜 알림] 이용 중인 플랜이 종료되고 무료 플랜으로 변경되었어요.',
   settlement_info_register_request: '[라이브클래스] 정산정보 입력 요청 안내 (지급 진행을 위해 확인이 필요합니다)',
   settlement_info_update_request:   '[라이브클래스] 정산정보 수정 요청 안내 (지급 진행을 위해 확인이 필요합니다)',
+  // 정기결제 (신규)
+  subscription_cancel_reserved:         '—',
+  subscription_cancel_refund_complete:  '—',
+  subscription_expired:                 '—',
+  subscription_new_creator_alarm:       '—',
   yearly_plan_alarm_before_1:   '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
   yearly_plan_alarm_before_15:  '[플랜 알림] 이용 중인 $%plan_name%$ 플랜이 자동으로 연장됩니다.',
 };
@@ -615,6 +675,11 @@ const SUBJ_AFTER_OVERRIDES = {
   plan_resubscribe_fail_and_change_to_default_alarm:'[플랜 변경] 이용 중인 플랜이 종료되어 무료 플랜으로 변경되었어요.',
   settlement_info_register_request:                 '[정산 안내] 정산 정보 입력 요청 안내 (지급 진행을 위해 확인이 필요합니다)',
   settlement_info_update_request:                   '[정산 안내] 정산 정보 수정 요청 안내 (지급 진행을 위해 확인이 필요합니다)',
+  // 정기결제
+  subscription_cancel_reserved:                     '[$%site_name%$] $%product_name%$ 구독 해지가 예약되었습니다',
+  subscription_cancel_refund_complete:              '[$%site_name%$] $%product_name%$ 구독 종료 및 환불 안내',
+  subscription_expired:                             '[$%site_name%$] $%product_name%$ 구독이 종료되었습니다',
+  subscription_new_creator_alarm:                   '[수강 안내] $%site_name%$ - $%buyer_name%$님이 $%product_name%$ 정기구독을 시작했습니다',
   yearly_plan_alarm_before_1:                       '[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 내일 자동 결제됩니다.',
   yearly_plan_alarm_before_15:                      '[플랜 알림] $%site_name%$ - $%plan_name%$ 플랜이 15일 후 자동 결제됩니다.',
   // 제목 변경
@@ -661,6 +726,13 @@ const EX = {
   부가서비스상품목록HTML: '<p style="margin:0">영상 스트리밍 — 월 9,900원</p>',
   부가서비스이용기간시작일: '2025년 7월 1일',
   부가서비스이용기간종료일: '2025년 7월 31일',
+  // 정기결제
+  product_name:       '헬스 트레이닝 구독권',
+  next_billing_date:  '2025년 8월 1일',
+  payment_amount:     '29,000원',
+  refund_method:      '신한카드',
+  last_try_date:      '2025년 7월 28일',
+  buyer_name:         '홍길동',
 };
 
 function replaceVars(html, map) {
@@ -675,11 +747,12 @@ const EX_IMG = {
 };
 
 function fillSubjects() {
-  Object.keys(SUBJ_BEFORE).forEach(id => {
+  const allIds = new Set([...Object.keys(SUBJ_BEFORE), ...Object.keys(SUBJ_AFTER_OVERRIDES)]);
+  allIds.forEach(id => {
     const beforeEl = document.getElementById('before-subj-' + id);
     const afterEl  = document.getElementById('after-subj-'  + id);
-    if (beforeEl) beforeEl.textContent = SUBJ_BEFORE[id];
-    if (afterEl)  afterEl.textContent  = SUBJ_AFTER_OVERRIDES[id] || SUBJ_BEFORE[id];
+    if (beforeEl) beforeEl.textContent = SUBJ_BEFORE[id] || '';
+    if (afterEl)  afterEl.textContent  = SUBJ_AFTER_OVERRIDES[id] || SUBJ_BEFORE[id] || '';
   });
 }
 
